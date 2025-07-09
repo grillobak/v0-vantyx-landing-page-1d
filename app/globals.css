@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 209 61% 23%;
+    --card: 0 0% 100%;
+    --card-foreground: 209 61% 23%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 209 61% 23%;
+    --primary: 209 61% 23%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 27 96% 67%;
+    --secondary-foreground: 209 61% 23%;
+    --muted: 0 0% 97%;
+    --muted-foreground: 209 30% 40%;
+    --accent: 27 96% 67%;
+    --accent-foreground: 209 61% 23%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 209 61% 23%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 209 61% 13%;
+    --foreground: 0 0% 97%;
+    --card: 209 61% 13%;
+    --card-foreground: 0 0% 97%;
+    --popover: 209 61% 13%;
+    --popover-foreground: 0 0% 97%;
+    --primary: 209 61% 23%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 27 96% 67%;
+    --secondary-foreground: 209 61% 23%;
+    --muted: 209 50% 20%;
+    --muted-foreground: 0 0% 80%;
+    --accent: 27 96% 67%;
+    --accent-foreground: 209 61% 23%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 97%;
+    --border: 209 50% 20%;
+    --input: 209 50% 20%;
+    --ring: 209 61% 33%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Estilos para el modo oscuro */
+.dark .bg-white {
+  @apply bg-gray-900;
+}
+
+.dark .bg-gray-50 {
+  @apply bg-gray-800;
+}
+
+.dark .bg-gray-100 {
+  @apply bg-gray-700;
+}
+
+.dark .text-gray-900 {
+  @apply text-gray-100;
+}
+
+.dark .text-gray-700 {
+  @apply text-gray-300;
+}
+
+.dark .text-gray-600 {
+  @apply text-gray-400;
+}
+
+.dark .text-gray-500 {
+  @apply text-gray-400;
+}
+
+.dark .border-gray-100 {
+  @apply border-gray-700;
+}
+
+.dark .border-gray-200 {
+  @apply border-gray-700;
+}
+
+/* Estilos específicos para componentes en modo oscuro */
+.dark .feature-card {
+  @apply bg-gray-800 border-gray-700;
+}
+
+.dark .pricing-card {
+  @apply bg-gray-800 border-gray-700;
+}
+
+.dark .testimonial-card {
+  @apply bg-gray-800 border-gray-700;
+}
+
+/* Colores personalizados de Vantyx */
+.vantyx-primary {
+  background-color: #1d3557;
+  color: white;
+}
+
+.vantyx-primary-text {
+  color: #1d3557;
+}
+
+.vantyx-secondary {
+  background-color: #f4a261;
+  color: #333;
+}
+
+.vantyx-secondary-text {
+  color: #f4a261;
+}
+
+.vantyx-light {
+  background-color: #f7f7f7;
+}
+
+.vantyx-light-alt {
+  background-color: #e0e0e0;
+}
+
+.vantyx-gradient {
+  background: linear-gradient(to right, #1d3557, #2a4a73);
+  color: white;
+}
+
+.dark .vantyx-gradient {
+  background: linear-gradient(to right, #1d3557, #2a4a73);
+  color: white;
+}
+
+.vantyx-btn-primary {
+  background-color: #1d3557;
+  color: white;
+}
+.vantyx-btn-primary:hover {
+  background-color: #152a45;
+}
+
+.vantyx-btn-secondary {
+  background-color: #f4a261;
+  color: #333;
+}
+.vantyx-btn-secondary:hover {
+  background-color: #e08c4c;
+}
+
+.vantyx-btn-outline {
+  border: 1px solid #1d3557;
+  color: #1d3557;
+}
+.vantyx-btn-outline:hover {
+  background-color: rgba(29, 53, 87, 0.1);
+}
+
+.vantyx-btn-outline-secondary {
+  border: 1px solid #f4a261;
+  color: #f4a261;
+}
+.vantyx-btn-outline-secondary:hover {
+  background-color: rgba(244, 162, 97, 0.1);
+}
