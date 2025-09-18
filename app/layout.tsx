@@ -10,7 +10,7 @@ export const metadata = {
   title: "Vantyx - Sistemas de Gestión ERP/CRM para Pymes",
   description:
     "Desarrollamos sistemas de gestión ERP/CRM para pymes, con foco en el sector agropecuario, comercial y servicios.",
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
