@@ -24,7 +24,7 @@ export default function RootLayout({
         <link rel="icon" href="/logo-vantyx.png" />
       </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange={false}>
           {children}
           <ScrollToTop />
         </ThemeProvider>

@@ -121,7 +121,7 @@ export default function Home() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 5a2 2 0 012-2h2a2 2 0 012 2"
           />
         </svg>
       ),
@@ -289,7 +289,8 @@ export default function Home() {
     },
     {
       question: "¿Puedo emitir facturas electrónicas con Vantyx?",
-      answer: "Sí. Vantyx está integrado con ARCA (ex AFIP) y permite emitir facturas electrónicas desde el sistema.",
+      answer:
+        "Sí. Vantyx puede integrarse con ARCA (consultar disponibilidad) y permite emitir facturas electrónicas desde el sistema.",
     },
     {
       question: "¿Qué pasa si tengo un problema o duda usando el sistema?",
@@ -595,12 +596,13 @@ export default function Home() {
               <SlideInRight>
                 <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-6">Facturación Electrónica</h2>
                 <p className="text-gray-600 dark:text-gray-400 mb-6">
-                  Genera facturas electrónicas de forma rápida y sencilla, cumpliendo con todos los requisitos de AFIP.
-                  Automatiza el proceso de facturación y ahorra tiempo valioso para tu negocio.
+                  Genera facturas electrónicas de forma rápida y sencilla, cumpliendo con todos los requisitos de ARCA
+                  (consultar disponibilidad). Automatiza el proceso de facturación y ahorra tiempo valioso para tu
+                  negocio.
                 </p>
                 <ul className="space-y-3">
                   {[
-                    "Integración completa con AFIP",
+                    "Integración con ARCA (consultar disponibilidad)",
                     "Generación de facturas A, B, C y E",
                     "Notas de crédito y débito",
                     "Envío automático por email",
@@ -760,7 +762,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <PricingCard
                 title="Básico"
-                price="$30.000"
+                price="$50.000"
                 description="Ideal para emprendedores y pequeñas empresas que están comenzando."
                 features={[
                   {
@@ -785,7 +787,7 @@ export default function Home() {
               />
               <PricingCard
                 title="Profesional"
-                price="$45.000"
+                price="$75.000"
                 description="Perfecto para empresas en crecimiento que necesitan más funcionalidades."
                 features={[
                   {
@@ -815,7 +817,7 @@ export default function Home() {
               />
               <PricingCard
                 title="Empresarial"
-                price="$70.000"
+                price="Consultar"
                 description="Para empresas establecidas que requieren soluciones completas y personalizadas."
                 features={[
                   {
@@ -939,7 +941,7 @@ export default function Home() {
                       <Mail className="h-5 w-5 text-[#1D3557] dark:text-[#F4A261] mt-1 mr-3" />
                       <div>
                         <h4 className="font-medium text-[#1D3557] dark:text-gray-200">Email</h4>
-                        <p className="text-gray-600 dark:text-gray-400">contacto@vantyx.net</p>
+                        <p className="text-gray-600 dark:text-gray-400">vantyx.ar@gmail.com</p>
                       </div>
                     </div>
                   </div>
@@ -981,7 +983,7 @@ export default function Home() {
                           className="text-[#1D3557] dark:text-[#F4A261] hover:text-[#2A4A73] dark:hover:text-[#E08C4C]"
                         >
                           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                            <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                           </svg>
                         </a>
                       </AnimatedIcon>
@@ -1095,7 +1097,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-center">
                     <Mail className="h-4 w-4 mr-2" />
-                    <span>contacto@vantyx.net</span>
+                    <span>vantyx.ar@gmail.com</span>
                   </li>
                 </ul>
                 <div className="mt-4 flex space-x-4">
