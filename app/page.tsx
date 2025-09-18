@@ -42,10 +42,24 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { FaqAccordion } from "@/components/faq-accordion"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SectorCard } from "@/components/sector-card"
+import { useScrollEffect } from "@/hooks/use-scroll-effect"
 import Image from "next/image"
 import { useState } from "react"
 
 export default function Home() {
+  const { scrollY } = useScrollEffect()
+
+  // Calcular opacidades basadas en el scroll
+  // El efecto dura aproximadamente 600px de scroll (altura típica de la sección hero)
+  const maxScroll = 600
+  const scrollProgress = Math.min(scrollY / maxScroll, 1)
+
+  // Opacidad del texto: empieza en 1 y baja a 0.1
+  const textOpacity = Math.max(1 - scrollProgress * 0.9, 0.1)
+
+  // Opacidad del fondo: empieza en 0.15 y sube a 0.4
+  const backgroundOpacity = Math.min(0.15 + scrollProgress * 0.25, 0.4)
+
   // Módulos con sus descripciones
   const modules = [
     {
@@ -81,7 +95,7 @@ export default function Home() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 7 0 00-7-7z"
           />
         </svg>
       ),
@@ -315,6 +329,8 @@ export default function Home() {
     {
       title: "Comercio",
       description: "Gestión de inventario, punto de venta, facturación electrónica y fidelización de clientes.",
+      detailedDescription:
+        "Vantyx integra módulos de ventas, punto de venta y stock con facturación electrónica y control de pagos. Permite seguimiento de clientes, ofertas, reportes de rendimiento y gestión de productos/servicios para que los comercios controlen todos sus procesos desde una misma plataforma.",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -322,19 +338,17 @@ export default function Home() {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          strokeWidth={1.5}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
         </svg>
       ),
     },
     {
       title: "Agropecuario",
       description: "Control de producción, gestión de campos, seguimiento de ganado y cosechas, facturación.",
+      detailedDescription:
+        "Vantyx permite planificar producción, controlar compras de insumos, seguimiento de stock y facturación. Incluye módulos para reportes de cosecha, control de inventarios, gestión de productos y servicios, ideal para productores que necesitan trazabilidad y visibilidad completa.",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -342,11 +356,11 @@ export default function Home() {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          strokeWidth={1.5}
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
             d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
@@ -355,6 +369,8 @@ export default function Home() {
     {
       title: "Servicios",
       description: "Gestión de proyectos, facturación por horas, seguimiento de tareas y control de gastos.",
+      detailedDescription:
+        "En Vantyx los servicios se gestionan con módulos de proyectos, tareas, presupuestos, facturación, pagos y reportes. Se pueden registrar tiempos de intervención, seguimiento de clientes, control de gastos y generar informes para medir rentabilidad.",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -362,11 +378,11 @@ export default function Home() {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          strokeWidth={1.5}
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
             d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
           />
         </svg>
@@ -375,6 +391,8 @@ export default function Home() {
     {
       title: "Manufactura",
       description: "Control de producción, gestión de materias primas, seguimiento de órdenes y costos.",
+      detailedDescription:
+        "Con Vantyx podés administrar órdenes de producción, gestionar inventario de materias primas, controlar stock, compras y envíos. Incluye también módulos contables y reportes para tener visibilidad sobre costos operativos y eficiencia de manufactura.",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -382,11 +400,11 @@ export default function Home() {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          strokeWidth={1.5}
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
             d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
           />
         </svg>
@@ -395,6 +413,8 @@ export default function Home() {
     {
       title: "Construcción",
       description: "Gestión de obras, presupuestos, control de materiales, seguimiento de avances y facturación.",
+      detailedDescription:
+        "Vantyx ofrece gestión de presupuestos, control de materiales, seguimiento de avance de obra, control de stock, manejo de pagos y facturación por hitos. Todo acompañado con reportes financieros y seguimiento de proyectos para una obra organizada.",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -402,11 +422,11 @@ export default function Home() {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          strokeWidth={1.5}
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
             d="M19 21V5a2 2 0 00-2-2h-6a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
           />
         </svg>
@@ -415,6 +435,8 @@ export default function Home() {
     {
       title: "Salud",
       description: "Gestión de pacientes, turnos, historias clínicas, facturación a obras sociales y reportes.",
+      detailedDescription:
+        "Vantyx gestiona pacientes, turnos, intervenciones, historiales clínicos y facturación a obras sociales. Incluye administración de empleados, reportes de atención, control de pagos y módulos de cuentas por cobrar para mantener claridad en lo administrativo.",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -422,11 +444,11 @@ export default function Home() {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          strokeWidth={1.5}
         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
           />
         </svg>
@@ -445,10 +467,21 @@ export default function Home() {
     }
   }
 
+  const [flippedSectorIndex, setFlippedSectorIndex] = useState<number | null>(null)
+
+  // Función para manejar el flip de sectores
+  const handleSectorFlip = (index: number) => {
+    if (flippedSectorIndex === index) {
+      setFlippedSectorIndex(null)
+    } else {
+      setFlippedSectorIndex(index)
+    }
+  }
+
   return (
     <div className="flex min-h-screen flex-col">
       {/* Navegación simple estilo Odoo */}
-      <nav className="py-4 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
+      <nav className="py-4 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 relative z-50">
         <div className="container mx-auto flex justify-between items-center px-4 md:px-6">
           <div className="flex items-center">
             <Logo width={180} height={60} />
@@ -494,23 +527,43 @@ export default function Home() {
       </nav>
 
       <main className="flex-1">
-        {/* Hero Section estilo Odoo */}
-        <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
-          <div className="container mx-auto px-4 md:px-6 text-center">
+        {/* Hero Section con efecto de scroll */}
+        <section className="py-16 md:py-24 bg-white dark:bg-gray-900 relative overflow-hidden min-h-[80vh] flex items-center">
+          {/* Imagen de fondo con opacidad dinámica */}
+          <div
+            className="absolute inset-0 z-0 transition-opacity duration-300 ease-out"
+            style={{ opacity: backgroundOpacity }}
+          >
+            <Image
+              src="/vantyx-building-bg.png"
+              alt="Vantyx Building Background"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Overlay gradiente para mejor legibilidad */}
+            <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/30 dark:from-gray-900/20 dark:via-transparent dark:to-gray-900/30"></div>
+          </div>
+
+          {/* Contenido con opacidad dinámica */}
+          <div
+            className="container mx-auto px-4 md:px-6 text-center relative z-10 transition-opacity duration-300 ease-out"
+            style={{ opacity: textOpacity }}
+          >
             <SlideUp>
-              <h1 className="text-4xl md:text-6xl font-bold text-[#1D3557] dark:text-white mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-bold text-[#1D3557] dark:text-white mb-6 leading-tight drop-shadow-sm">
                 Todo tu negocio en{" "}
                 <span className="relative">
                   <span className="relative z-10">una sola plataforma</span>
                   <span className="absolute -inset-1 bg-[#F4A261] dark:bg-[#F4A261]/80 -skew-y-3 z-0"></span>
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-[#1D3557] dark:text-gray-300 mb-10 max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-[#1D3557] dark:text-gray-300 mb-10 max-w-3xl mx-auto drop-shadow-sm">
                 ¡Potencia tu Negocio con Vantyx!
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
                 <AnimatedButton
-                  className="vantyx-btn-primary px-8 py-3 text-lg"
+                  className="vantyx-btn-primary px-8 py-3 text-lg shadow-lg"
                   onClick={() => {
                     const contactSection = document.getElementById("contacto")
                     if (contactSection) {
@@ -522,7 +575,7 @@ export default function Home() {
                 </AnimatedButton>
                 <AnimatedButton
                   variant="outline"
-                  className="vantyx-btn-outline px-8 py-3 text-lg"
+                  className="vantyx-btn-outline px-8 py-3 text-lg shadow-lg bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm"
                   onClick={() => window.open("https://wa.me/543794601984", "_blank")}
                 >
                   Contacta a un Asesor
@@ -689,18 +742,36 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {sectores.map((sector, index) => (
-                <SectorCard key={index} title={sector.title} description={sector.description} icon={sector.icon} />
+                <SectorCard
+                  key={index}
+                  title={sector.title}
+                  description={sector.description}
+                  detailedDescription={sector.detailedDescription}
+                  icon={sector.icon}
+                  isFlipped={flippedSectorIndex === index}
+                  onFlip={() => handleSectorFlip(index)}
+                />
               ))}
             </div>
           </div>
         </section>
 
-        {/* Vantyx Visual - NUEVA SECCIÓN */}
+        {/* Vantyx Visual - SECCIÓN ACTUALIZADA */}
         <section className="py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <SlideInLeft>
                 <div className="text-center md:text-left">
+                  {/* Logo de Vantyx Visual */}
+                  <div className="mb-6 flex justify-center md:justify-start">
+                    <Image
+                      src="/vantyx-visual-logo.png"
+                      alt="Vantyx Visual Logo"
+                      width={200}
+                      height={120}
+                      className="h-auto"
+                    />
+                  </div>
                   <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Vantyx Visual</h2>
                   <h3 className="text-xl text-[#1D3557] dark:text-gray-300 mb-6">
                     Impulsá tu marca con identidad propia
@@ -728,7 +799,7 @@ export default function Home() {
                 <div className="rounded-lg overflow-hidden shadow-lg">
                   <div className="relative">
                     <Image
-                      src="/vantyx-visual-bolsas-marcas.png"
+                      src="/vantyx-visual-landing.png"
                       alt="Vantyx Visual - Bolsas y uniformes personalizados para negocios"
                       width={600}
                       height={900}
