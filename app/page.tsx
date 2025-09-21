@@ -42,6 +42,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { FaqAccordion } from "@/components/faq-accordion"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SectorCard } from "@/components/sector-card"
+import { Chatbot } from "@/components/chatbot"
 import { useScrollEffect } from "@/hooks/use-scroll-effect"
 import Image from "next/image"
 import { useState } from "react"
@@ -1054,7 +1055,7 @@ export default function Home() {
                           className="text-[#1D3557] dark:text-[#F4A261] hover:text-[#2A4A73] dark:hover:text-[#E08C4C]"
                         >
                           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                           </svg>
                         </a>
                       </AnimatedIcon>
@@ -1210,6 +1211,9 @@ export default function Home() {
 
       {/* Botón flotante de WhatsApp */}
       <WhatsAppButton />
+
+      {/* Chatbot */}
+      <Chatbot />
     </div>
   )
 }
