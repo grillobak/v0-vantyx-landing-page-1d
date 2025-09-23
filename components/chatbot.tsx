@@ -1,18 +1,109 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
-import { useChat } from "ai/react"
 import { motion, AnimatePresence } from "framer-motion"
 import { MessageCircle, X, Send, Bot, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
+interface Message {
+  id: string
+  role: "user" | "assistant"
+  content: string
+}
+
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false)
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat()
+  const [messages, setMessages] = useState<Message[]>([])
+  const [input, setInput] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   const toggleChat = () => setIsOpen(!isOpen)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!input.trim() || isLoading) return
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: "user",
+      content: input,
+    }
+
+    setMessages((prev) => [...prev, userMessage])
+    setInput("")
+    setIsLoading(true)
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messages: [...messages, userMessage].map((msg) => ({
+            role: msg.role,
+            content: msg.content,
+          })),
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error("Error en la respuesta del servidor")
+      }
+
+      const reader = response.body?.getReader()
+      const decoder = new TextDecoder()
+      let assistantContent = ""
+
+      const assistantMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: "assistant",
+        content: "",
+      }
+
+      setMessages((prev) => [...prev, assistantMessage])
+
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break
+
+          const chunk = decoder.decode(value)
+          const lines = chunk.split("\n")
+
+          for (const line of lines) {
+            if (line.startsWith("0:")) {
+              try {
+                const data = JSON.parse(line.slice(2))
+                if (data.type === "text-delta" && data.textDelta) {
+                  assistantContent += data.textDelta
+                  setMessages((prev) =>
+                    prev.map((msg) => (msg.id === assistantMessage.id ? { ...msg, content: assistantContent } : msg)),
+                  )
+                }
+              } catch (error) {
+                console.error("Error parsing chunk:", error)
+              }
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Error:", error)
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: "assistant",
+        content: "Lo siento, hubo un error. Por favor, intenta nuevamente o contáctanos por WhatsApp.",
+      }
+      setMessages((prev) => [...prev, errorMessage])
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <>
@@ -127,7 +218,7 @@ export function Chatbot() {
               <form onSubmit={handleSubmit} className="flex space-x-2">
                 <Input
                   value={input}
-                  onChange={handleInputChange}
+                  onChange={(e) => setInput(e.target.value)}
                   placeholder="Escribe tu pregunta..."
                   className="flex-1 text-sm"
                   disabled={isLoading}
