@@ -2,9 +2,9 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { MessageCircle, X, Send, Bot, User } from "lucide-react"
+import { MessageCircle, X, Send, Bot, User, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -13,6 +13,7 @@ interface Message {
   id: string
   role: "user" | "assistant"
   content: string
+  timestamp: Date
 }
 
 export function Chatbot() {
@@ -20,8 +21,24 @@ export function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const scrollAreaRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
-  const toggleChat = () => setIsOpen(!isOpen)
+  const toggleChat = () => {
+    setIsOpen(!isOpen)
+    if (!isOpen) {
+      setTimeout(() => {
+        inputRef.current?.focus()
+      }, 300)
+    }
+  }
+
+  useEffect(() => {
+    if (scrollAreaRef.current) {
+      scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight
+    }
+  }, [messages])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -30,12 +47,14 @@ export function Chatbot() {
     const userMessage: Message = {
       id: Date.now().toString(),
       role: "user",
-      content: input,
+      content: input.trim(),
+      timestamp: new Date(),
     }
 
     setMessages((prev) => [...prev, userMessage])
     setInput("")
     setIsLoading(true)
+    setError(null)
 
     try {
       const response = await fetch("/api/chat", {
@@ -52,10 +71,14 @@ export function Chatbot() {
       })
 
       if (!response.ok) {
-        throw new Error("Error en la respuesta del servidor")
+        throw new Error(`Error ${response.status}: ${response.statusText}`)
       }
 
       const reader = response.body?.getReader()
+      if (!reader) {
+        throw new Error("No se pudo leer la respuesta")
+      }
+
       const decoder = new TextDecoder()
       let assistantContent = ""
 
@@ -63,46 +86,108 @@ export function Chatbot() {
         id: (Date.now() + 1).toString(),
         role: "assistant",
         content: "",
+        timestamp: new Date(),
       }
 
       setMessages((prev) => [...prev, assistantMessage])
 
-      if (reader) {
+      try {
         while (true) {
           const { done, value } = await reader.read()
           if (done) break
 
-          const chunk = decoder.decode(value)
-          const lines = chunk.split("\n")
+          const chunk = decoder.decode(value, { stream: true })
+          const lines = chunk.split("\n").filter((line) => line.trim() !== "")
 
           for (const line of lines) {
-            if (line.startsWith("0:")) {
-              try {
-                const data = JSON.parse(line.slice(2))
-                if (data.type === "text-delta" && data.textDelta) {
-                  assistantContent += data.textDelta
-                  setMessages((prev) =>
-                    prev.map((msg) => (msg.id === assistantMessage.id ? { ...msg, content: assistantContent } : msg)),
-                  )
-                }
-              } catch (error) {
-                console.error("Error parsing chunk:", error)
+            try {
+              let data
+
+              // Manejar diferentes formatos de línea del stream
+              if (line.startsWith("0:")) {
+                const jsonStr = line.slice(2)
+                data = JSON.parse(jsonStr)
+              } else if (line.startsWith("data: ")) {
+                const jsonStr = line.slice(6)
+                if (jsonStr === "[DONE]") break
+                data = JSON.parse(jsonStr)
+              } else if (line.startsWith("{")) {
+                data = JSON.parse(line)
+              } else {
+                // Línea no reconocida, continuar
+                continue
               }
+
+              // Manejar diferentes tipos de chunks de manera segura
+              switch (data.type) {
+                case "stream-start":
+                  // Inicio del stream - no hacer nada
+                  console.log("Stream iniciado")
+                  break
+
+                case "text-delta":
+                  if (data.textDelta) {
+                    assistantContent += data.textDelta
+                    setMessages((prev) =>
+                      prev.map((msg) => (msg.id === assistantMessage.id ? { ...msg, content: assistantContent } : msg)),
+                    )
+                  }
+                  break
+
+                case "finish":
+                case "stream-end":
+                  // Fin del stream
+                  console.log("Stream terminado")
+                  break
+
+                case "error":
+                  throw new Error(data.error || "Error en el stream")
+
+                default:
+                  // Tipo de chunk no manejado - log pero no error
+                  console.log("Tipo de chunk no manejado:", data.type, data)
+                  break
+              }
+            } catch (parseError) {
+              // Error de parsing - log pero continuar
+              console.warn("Error parsing chunk:", parseError, "Line:", line)
+              continue
             }
           }
         }
+      } catch (streamError) {
+        console.error("Error durante el streaming:", streamError)
+        throw streamError
+      }
+
+      // Verificar que se recibió contenido
+      if (!assistantContent.trim()) {
+        throw new Error("No se recibió respuesta del asistente")
       }
     } catch (error) {
-      console.error("Error:", error)
+      console.error("Error en el chat:", error)
+      setError("Hubo un problema con la conexión. Por favor, intenta nuevamente.")
+
+      // Remover el mensaje del asistente vacío si existe
+      setMessages((prev) => prev.filter((msg) => msg.id !== (Date.now() + 1).toString()))
+
+      // Agregar mensaje de error
       const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: (Date.now() + 2).toString(),
         role: "assistant",
-        content: "Lo siento, hubo un error. Por favor, intenta nuevamente o contáctanos por WhatsApp.",
+        content:
+          "Lo siento, hubo un problema técnico. Por favor, intenta nuevamente o contáctanos directamente por WhatsApp al +54 379 4601984 📱",
+        timestamp: new Date(),
       }
       setMessages((prev) => [...prev, errorMessage])
     } finally {
       setIsLoading(false)
     }
+  }
+
+  const clearChat = () => {
+    setMessages([])
+    setError(null)
   }
 
   return (
@@ -116,8 +201,14 @@ export function Chatbot() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: 1 }}
+        aria-label="Abrir chat de asistencia"
       >
         <MessageCircle className="w-6 h-6" />
+        <motion.div
+          className="absolute -top-1 -right-1 w-3 h-3 bg-[#F4A261] rounded-full"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+        />
       </motion.button>
 
       {/* Ventana del chat */}
@@ -133,19 +224,50 @@ export function Chatbot() {
             {/* Header del chat */}
             <div className="bg-[#1D3557] text-white p-4 rounded-t-lg flex justify-between items-center">
               <div className="flex items-center space-x-2">
-                <Bot className="w-5 h-5" />
+                <div className="relative">
+                  <Bot className="w-5 h-5" />
+                  <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-green-400 rounded-full"></div>
+                </div>
                 <div>
                   <h3 className="font-semibold">Asistente Vantyx</h3>
-                  <p className="text-xs text-gray-300">¿En qué puedo ayudarte?</p>
+                  <p className="text-xs text-gray-300">En línea • Responde al instante</p>
                 </div>
               </div>
-              <Button variant="ghost" size="sm" onClick={toggleChat} className="text-white hover:bg-white/20 p-1">
-                <X className="w-4 h-4" />
-              </Button>
+              <div className="flex items-center space-x-1">
+                {messages.length > 0 && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={clearChat}
+                    className="text-white hover:bg-white/20 p-1"
+                    title="Limpiar conversación"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                      />
+                    </svg>
+                  </Button>
+                )}
+                <Button variant="ghost" size="sm" onClick={toggleChat} className="text-white hover:bg-white/20 p-1">
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
             </div>
 
+            {/* Error banner */}
+            {error && (
+              <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-400 p-3 flex items-center space-x-2">
+                <AlertCircle className="w-4 h-4 text-red-500" />
+                <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
+              </div>
+            )}
+
             {/* Área de mensajes */}
-            <ScrollArea className="flex-1 p-4">
+            <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
               <div className="space-y-4">
                 {/* Mensaje de bienvenida */}
                 {messages.length === 0 && (
@@ -156,8 +278,17 @@ export function Chatbot() {
                     <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg max-w-xs">
                       <p className="text-sm text-gray-800 dark:text-gray-200">
                         ¡Hola! 👋 Soy el asistente de Vantyx. Puedo ayudarte con información sobre nuestros módulos,
-                        planes y cómo podemos optimizar tu negocio. ¿Qué te gustaría saber?
+                        planes y cómo podemos optimizar tu negocio.
                       </p>
+                      <p className="text-sm text-gray-800 dark:text-gray-200 mt-2">
+                        ¿Qué te gustaría saber? Puedes preguntarme sobre:
+                      </p>
+                      <ul className="text-xs text-gray-600 dark:text-gray-400 mt-1 space-y-1">
+                        <li>• Módulos disponibles</li>
+                        <li>• Planes y precios</li>
+                        <li>• Sectores que atendemos</li>
+                        <li>• Cómo solicitar una demo</li>
+                      </ul>
                     </div>
                   </div>
                 )}
@@ -185,6 +316,12 @@ export function Chatbot() {
                       }`}
                     >
                       <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                      <p className="text-xs opacity-70 mt-1">
+                        {message.timestamp.toLocaleTimeString("es-AR", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -217,11 +354,13 @@ export function Chatbot() {
             <div className="p-4 border-t border-gray-200 dark:border-gray-700">
               <form onSubmit={handleSubmit} className="flex space-x-2">
                 <Input
+                  ref={inputRef}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Escribe tu pregunta..."
                   className="flex-1 text-sm"
                   disabled={isLoading}
+                  maxLength={500}
                 />
                 <Button
                   type="submit"
@@ -232,7 +371,10 @@ export function Chatbot() {
                   <Send className="w-4 h-4" />
                 </Button>
               </form>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">Powered by Vantyx AI</p>
+              <div className="flex justify-between items-center mt-2">
+                <p className="text-xs text-gray-500 dark:text-gray-400">Powered by Vantyx AI</p>
+                <p className="text-xs text-gray-400">{input.length}/500</p>
+              </div>
             </div>
           </motion.div>
         )}

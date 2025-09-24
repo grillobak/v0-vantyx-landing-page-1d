@@ -1,12 +1,28 @@
 import { streamText } from "ai"
 import { openai } from "@ai-sdk/openai"
+import type { NextRequest } from "next/server"
 
-export async function POST(req: Request) {
-  const { messages } = await req.json()
+export const runtime = "edge"
 
-  const result = await streamText({
-    model: openai("gpt-4o"),
-    system: `Eres un asistente virtual especializado en Vantyx, un sistema ERP/CRM para PyMEs argentinas. Tu objetivo es ayudar a los visitantes a entender cómo Vantyx puede beneficiar a su negocio.
+export async function POST(req: NextRequest) {
+  try {
+    // Verificar que la API key esté configurada
+    if (!process.env.OPENAI_API_KEY) {
+      console.error("OPENAI_API_KEY no está configurada")
+      return new Response("Configuración del servidor incompleta", { status: 500 })
+    }
+
+    const { messages } = await req.json()
+
+    // Validar que messages existe y es un array
+    if (!messages || !Array.isArray(messages)) {
+      return new Response("Invalid messages format", { status: 400 })
+    }
+
+    // Configurar el cliente de OpenAI con la API key
+    const result = await streamText({
+      model: openai("gpt-4o"),
+      system: `Eres un asistente virtual especializado en Vantyx, un sistema ERP/CRM para PyMEs argentinas. Tu objetivo es ayudar a los visitantes a entender cómo Vantyx puede beneficiar a su negocio.
 
 INFORMACIÓN SOBRE VANTYX:
 
@@ -52,9 +68,20 @@ INSTRUCCIONES:
 7. Si preguntan por integración con AFIP, menciona que la facturación electrónica está disponible (consultar disponibilidad de ARCA)
 
 Responde en español argentino y mantén las respuestas concisas pero informativas.`,
-    messages,
-    maxTokens: 500,
-  })
+      messages,
+      maxTokens: 500,
+      temperature: 0.7,
+    })
 
-  return result.toDataStreamResponse()
+    return result.toDataStreamResponse()
+  } catch (error) {
+    console.error("Error in chat API:", error)
+
+    // Proporcionar diferentes mensajes de error según el tipo
+    if (error instanceof Error && error.message.includes("API key")) {
+      return new Response("Error de autenticación con el servicio de IA", { status: 401 })
+    }
+
+    return new Response("Error interno del servidor", { status: 500 })
+  }
 }
