@@ -1,10 +1,9 @@
 import { streamText } from "ai"
 import { openai } from "@ai-sdk/openai"
-import type { NextRequest } from "next/server"
 
 export const runtime = "edge"
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     // Verificar que la API key esté configurada
     if (!process.env.OPENAI_API_KEY) {
@@ -19,7 +18,6 @@ export async function POST(req: NextRequest) {
       return new Response("Invalid messages format", { status: 400 })
     }
 
-    // Configurar el cliente de OpenAI con la API key
     const result = await streamText({
       model: openai("gpt-4o"),
       system: `Eres un asistente virtual especializado en Vantyx, un sistema ERP/CRM para PyMEs argentinas. Tu objetivo es ayudar a los visitantes a entender cómo Vantyx puede beneficiar a su negocio.

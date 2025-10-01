@@ -56,6 +56,17 @@ export function Chatbot() {
     setIsLoading(true)
     setError(null)
 
+    // Crear mensaje del asistente vacío
+    const assistantMessageId = (Date.now() + 1).toString()
+    const assistantMessage: Message = {
+      id: assistantMessageId,
+      role: "assistant",
+      content: "",
+      timestamp: new Date(),
+    }
+
+    setMessages((prev) => [...prev, assistantMessage])
+
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -82,82 +93,43 @@ export function Chatbot() {
       const decoder = new TextDecoder()
       let assistantContent = ""
 
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content: "",
-        timestamp: new Date(),
-      }
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
 
-      setMessages((prev) => [...prev, assistantMessage])
+        const chunk = decoder.decode(value, { stream: true })
 
-      try {
-        while (true) {
-          const { done, value } = await reader.read()
-          if (done) break
+        // Procesar cada línea del chunk
+        const lines = chunk.split("\n")
 
-          const chunk = decoder.decode(value, { stream: true })
-          const lines = chunk.split("\n").filter((line) => line.trim() !== "")
+        for (const line of lines) {
+          if (!line.trim()) continue
 
-          for (const line of lines) {
+          // Buscar solo líneas que contengan text-delta
+          if (line.includes('"type":"text-delta"') && line.includes('"textDelta"')) {
             try {
-              let data
-
-              // Manejar diferentes formatos de línea del stream
+              // Extraer el JSON de la línea
+              let jsonStr = line
               if (line.startsWith("0:")) {
-                const jsonStr = line.slice(2)
-                data = JSON.parse(jsonStr)
+                jsonStr = line.slice(2)
               } else if (line.startsWith("data: ")) {
-                const jsonStr = line.slice(6)
-                if (jsonStr === "[DONE]") break
-                data = JSON.parse(jsonStr)
-              } else if (line.startsWith("{")) {
-                data = JSON.parse(line)
-              } else {
-                // Línea no reconocida, continuar
-                continue
+                jsonStr = line.slice(6)
               }
 
-              // Manejar diferentes tipos de chunks de manera segura
-              switch (data.type) {
-                case "stream-start":
-                  // Inicio del stream - no hacer nada
-                  console.log("Stream iniciado")
-                  break
+              const data = JSON.parse(jsonStr)
 
-                case "text-delta":
-                  if (data.textDelta) {
-                    assistantContent += data.textDelta
-                    setMessages((prev) =>
-                      prev.map((msg) => (msg.id === assistantMessage.id ? { ...msg, content: assistantContent } : msg)),
-                    )
-                  }
-                  break
-
-                case "finish":
-                case "stream-end":
-                  // Fin del stream
-                  console.log("Stream terminado")
-                  break
-
-                case "error":
-                  throw new Error(data.error || "Error en el stream")
-
-                default:
-                  // Tipo de chunk no manejado - log pero no error
-                  console.log("Tipo de chunk no manejado:", data.type, data)
-                  break
+              if (data.type === "text-delta" && data.textDelta) {
+                assistantContent += data.textDelta
+                setMessages((prev) =>
+                  prev.map((msg) => (msg.id === assistantMessageId ? { ...msg, content: assistantContent } : msg)),
+                )
               }
             } catch (parseError) {
-              // Error de parsing - log pero continuar
-              console.warn("Error parsing chunk:", parseError, "Line:", line)
+              // Ignorar errores de parsing
               continue
             }
           }
         }
-      } catch (streamError) {
-        console.error("Error durante el streaming:", streamError)
-        throw streamError
       }
 
       // Verificar que se recibió contenido
@@ -168,8 +140,8 @@ export function Chatbot() {
       console.error("Error en el chat:", error)
       setError("Hubo un problema con la conexión. Por favor, intenta nuevamente.")
 
-      // Remover el mensaje del asistente vacío si existe
-      setMessages((prev) => prev.filter((msg) => msg.id !== (Date.now() + 1).toString()))
+      // Remover el mensaje del asistente vacío
+      setMessages((prev) => prev.filter((msg) => msg.id !== assistantMessageId))
 
       // Agregar mensaje de error
       const errorMessage: Message = {
@@ -188,6 +160,18 @@ export function Chatbot() {
   const clearChat = () => {
     setMessages([])
     setError(null)
+  }
+
+  const retryLastMessage = () => {
+    if (messages.length >= 2) {
+      const lastUserMessage = messages[messages.length - 2]
+      if (lastUserMessage.role === "user") {
+        setInput(lastUserMessage.content)
+        // Remover los últimos dos mensajes (usuario y asistente con error)
+        setMessages((prev) => prev.slice(0, -2))
+        setError(null)
+      }
+    }
   }
 
   return (
@@ -262,7 +246,15 @@ export function Chatbot() {
             {error && (
               <div className="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-400 p-3 flex items-center space-x-2">
                 <AlertCircle className="w-4 h-4 text-red-500" />
-                <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
+                <div className="flex-1">
+                  <p className="text-sm text-red-700 dark:text-red-300">Hubo un problema con la conexión.</p>
+                  <button
+                    onClick={retryLastMessage}
+                    className="text-sm text-red-600 dark:text-red-400 underline hover:no-underline mt-1"
+                  >
+                    Reintentar último mensaje
+                  </button>
+                </div>
               </div>
             )}
 
