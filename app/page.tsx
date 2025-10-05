@@ -6,20 +6,21 @@ import {
   ArrowRight,
   Check,
   FileText,
-  ShoppingCart,
   Package,
-  BarChart4,
   Users,
-  Calendar,
-  Truck,
-  Clipboard,
   DollarSign,
   Building2,
   Facebook,
   Instagram,
-  Paintbrush,
-  Palette,
-  ShoppingBag,
+  Zap,
+  Headphones,
+  Link2,
+  Settings,
+  CreditCard,
+  Database,
+  Shield,
+  RefreshCw,
+  HelpCircle,
 } from "lucide-react"
 import Link from "next/link"
 import { Logo } from "@/components/logo"
@@ -36,32 +37,23 @@ import {
 import { AnimatedIcon } from "@/components/animations/animated-icon"
 import { AnimatedButton } from "@/components/animations/animated-button"
 import { FeatureCard } from "@/components/feature-card"
-import { PricingCard } from "@/components/pricing-card"
-import { TestimonialCard } from "@/components/testimonial-card"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { FaqAccordion } from "@/components/faq-accordion"
+import type { FaqItem } from "@/components/faq-accordion"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SectorCard } from "@/components/sector-card"
 import { Chatbot } from "@/components/chatbot"
 import { ChatbotTest } from "@/components/chatbot-test"
-import { useScrollEffect } from "@/hooks/use-scroll-effect"
 import Image from "next/image"
 import { useState } from "react"
+import { motion } from "framer-motion"
+
+// Nuevos imports
+import { EnhancedHeroSection } from "@/components/enhanced-hero-section"
+import { PricingComparisonTable } from "@/components/pricing-comparison-table"
+import { FacebookCarousel } from "@/components/facebook-carousel"
 
 export default function Home() {
-  const { scrollY } = useScrollEffect()
-
-  // Calcular opacidades basadas en el scroll
-  // El efecto dura aproximadamente 600px de scroll (altura típica de la sección hero)
-  const maxScroll = 600
-  const scrollProgress = Math.min(scrollY / maxScroll, 1)
-
-  // Opacidad del texto: empieza en 1 y baja a 0.1
-  const textOpacity = Math.max(1 - scrollProgress * 0.9, 0.1)
-
-  // Opacidad del fondo: empieza en 0.15 y sube a 0.4
-  const backgroundOpacity = Math.min(0.15 + scrollProgress * 0.25, 0.4)
-
   // Módulos con sus descripciones
   const modules = [
     {
@@ -97,7 +89,7 @@ export default function Home() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 7 0 00-7-7z"
+            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
           />
         </svg>
       ),
@@ -137,7 +129,7 @@ export default function Home() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
           />
         </svg>
       ),
@@ -292,37 +284,112 @@ export default function Home() {
     },
   ]
 
-  // FAQ items
-  const faqItems = [
+  // FAQ items con categorías e iconos
+  const faqItems: FaqItem[] = [
     {
       question: "¿Qué tipo de empresas pueden usar Vantyx?",
       answer:
-        "Vantyx está diseñado especialmente para pymes y emprendimientos de distintos rubros: comercio, servicios, agro, talleres, entre otros.",
+        "Vantyx está diseñado especialmente para pymes y emprendimientos de distintos rubros: comercio, servicios, agro, talleres, entre otros. Nuestro sistema es flexible y se adapta a las necesidades específicas de cada sector.",
+      category: "general",
+      icon: <Building2 className="h-5 w-5" />,
     },
     {
       question: "¿Necesito conocimientos técnicos para usar el sistema?",
-      answer: "No. Vantyx es intuitivo, fácil de usar y con una curva de aprendizaje rápida.",
+      answer:
+        "No. Vantyx es intuitivo, fácil de usar y con una curva de aprendizaje rápida. Además, ofrecemos capacitación inicial y soporte continuo para que puedas aprovechar al máximo todas las funcionalidades.",
+      category: "general",
+      icon: <HelpCircle className="h-5 w-5" />,
     },
     {
       question: "¿Puedo emitir facturas electrónicas con Vantyx?",
       answer:
-        "Sí. Vantyx puede integrarse con ARCA (consultar disponibilidad) y permite emitir facturas electrónicas desde el sistema.",
+        "Sí. Vantyx puede integrarse con ARCA (consultar disponibilidad) y permite emitir facturas electrónicas tipo A, B, C y E desde el sistema. Toda la facturación cumple con los requisitos legales argentinos.",
+      category: "funcionalidades",
+      icon: <FileText className="h-5 w-5" />,
+    },
+    {
+      question: "¿Cómo funciona el sistema de inventario?",
+      answer:
+        "El módulo de inventario permite administrar stock en tiempo real con alertas por niveles mínimos, control de entradas y salidas, múltiples ubicaciones, códigos de barras y reportes detallados de movimientos.",
+      category: "funcionalidades",
+      icon: <Package className="h-5 w-5" />,
+    },
+    {
+      question: "¿Qué incluye el módulo CRM?",
+      answer:
+        "El CRM incluye gestión completa de clientes, seguimiento de oportunidades de venta, historial de interacciones, segmentación, campañas de marketing y reportes de performance comercial.",
+      category: "funcionalidades",
+      icon: <Users className="h-5 w-5" />,
+    },
+    {
+      question: "¿Puedo acceder desde mi celular?",
+      answer:
+        "Sí, Vantyx es completamente responsive y cuenta con una app móvil que te permite operar el sistema desde cualquier lugar y dispositivo con conexión a internet.",
+      category: "funcionalidades",
+      icon: <Zap className="h-5 w-5" />,
+    },
+    {
+      question: "¿Cuánto cuesta Vantyx?",
+      answer:
+        "Tenemos planes desde $50.000/mes. El plan Básico incluye funcionalidades esenciales, el Profesional ($75.000) agrega herramientas avanzadas, y el Empresarial es personalizado según tus necesidades. Todos los planes incluyen soporte.",
+      category: "precios",
+      icon: <DollarSign className="h-5 w-5" />,
+    },
+    {
+      question: "¿Hay contrato de permanencia?",
+      answer:
+        "No, nuestros planes son mensuales sin permanencia mínima. Puedes cancelar cuando quieras sin penalizaciones. Queremos que te quedes con nosotros porque estás satisfecho, no por obligación.",
+      category: "precios",
+      icon: <Shield className="h-5 w-5" />,
+    },
+    {
+      question: "¿Qué formas de pago aceptan?",
+      answer:
+        "Aceptamos transferencia bancaria, Mercado Pago, efectivo y próximamente tarjetas de crédito/débito. La facturación es mensual y puedes gestionar tu suscripción desde el panel de usuario.",
+      category: "precios",
+      icon: <CreditCard className="h-5 w-5" />,
     },
     {
       question: "¿Qué pasa si tengo un problema o duda usando el sistema?",
-      answer: "Contamos con soporte técnico por WhatsApp y mail. Te ayudamos a resolverlo lo antes posible.",
+      answer:
+        "Contamos con soporte técnico por WhatsApp, email y teléfono. Los planes Profesional y Empresarial incluyen soporte prioritario. Te ayudamos a resolver cualquier inconveniente lo antes posible.",
+      category: "soporte",
+      icon: <Headphones className="h-5 w-5" />,
+    },
+    {
+      question: "¿Ofrecen capacitación?",
+      answer:
+        "Sí, todos nuestros planes incluyen capacitación inicial. Además, tenemos tutoriales en video, webinars mensuales y documentación completa. Los planes superiores incluyen capacitación personalizada.",
+      category: "soporte",
+      icon: <Settings className="h-5 w-5" />,
     },
     {
       question: "¿Cómo se actualiza el sistema? ¿Tengo que hacer algo?",
-      answer: "Las actualizaciones se realizan automáticamente. Siempre vas a tener la última versión disponible.",
+      answer:
+        "Las actualizaciones se realizan automáticamente sin que tengas que hacer nada. Siempre vas a tener la última versión disponible con todas las mejoras y nuevas funcionalidades.",
+      category: "soporte",
+      icon: <RefreshCw className="h-5 w-5" />,
     },
     {
       question: "¿Puedo migrar mis datos desde otro sistema?",
-      answer: "Sí. Podemos ayudarte a importar productos, clientes y otros datos desde tu sistema anterior.",
+      answer:
+        "Sí. Podemos ayudarte a importar productos, clientes, proveedores y otros datos desde tu sistema anterior (Excel, otro ERP, etc.). El equipo técnico te asiste en todo el proceso de migración.",
+      category: "integracion",
+      icon: <Database className="h-5 w-5" />,
     },
     {
-      question: "¿Cuáles son las formas de pago disponibles?",
-      answer: "Podés pagar con transferencia, Mercado Pago o efectivo y también aceptaremos tarjetas.",
+      question: "¿Se integra con otras herramientas?",
+      answer:
+        "Vantyx se integra con múltiples servicios: ARCA para facturación electrónica, MercadoPago/MercadoLibre, email marketing, contabilidad, y muchos más. Consultá por integraciones específicas.",
+      category: "integracion",
+      icon: <Link2 className="h-5 w-5" />,
+    },
+    {
+      question: "¿Los datos están seguros?",
+      answer:
+        "Absolutamente. Usamos encriptación de última generación, backups automáticos diarios, servidores seguros y cumplimos con todas las normativas de protección de datos. Tu información está totalmente protegida.",
+      category: "integracion",
+      icon: <Shield className="h-5 w-5" />,
     },
   ]
 
@@ -460,7 +527,6 @@ export default function Home() {
 
   const [openModuleIndex, setOpenModuleIndex] = useState<number | null>(null)
 
-  // Función para abrir/cerrar un módulo
   const toggleModule = (index: number) => {
     if (openModuleIndex === index) {
       setOpenModuleIndex(null)
@@ -471,7 +537,6 @@ export default function Home() {
 
   const [flippedSectorIndex, setFlippedSectorIndex] = useState<number | null>(null)
 
-  // Función para manejar el flip de sectores
   const handleSectorFlip = (index: number) => {
     if (flippedSectorIndex === index) {
       setFlippedSectorIndex(null)
@@ -532,65 +597,10 @@ export default function Home() {
       </nav>
 
       <main className="flex-1">
-        {/* Hero Section con efecto de scroll */}
-        <section className="py-16 md:py-24 bg-white dark:bg-gray-900 relative overflow-hidden min-h-[80vh] flex items-center">
-          {/* Imagen de fondo con opacidad dinámica */}
-          <div
-            className="absolute inset-0 z-0 transition-opacity duration-300 ease-out"
-            style={{ opacity: backgroundOpacity }}
-          >
-            <Image
-              src="/vantyx-building-bg.png"
-              alt="Vantyx Building Background"
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* Overlay gradiente para mejor legibilidad */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/30 dark:from-gray-900/20 dark:via-transparent dark:to-gray-900/30"></div>
-          </div>
+        {/* Hero Section Mejorado */}
+        <EnhancedHeroSection />
 
-          {/* Contenido con opacidad dinámica */}
-          <div
-            className="container mx-auto px-4 md:px-6 text-center relative z-10 transition-opacity duration-300 ease-out"
-            style={{ opacity: textOpacity }}
-          >
-            <SlideUp>
-              <h1 className="text-4xl md:text-6xl font-bold text-[#1D3557] dark:text-white mb-6 leading-tight drop-shadow-sm">
-                Todo tu negocio en{" "}
-                <span className="relative">
-                  <span className="relative z-10">una sola plataforma</span>
-                  <span className="absolute -inset-1 bg-[#F4A261] dark:bg-[#F4A261]/80 -skew-y-3 z-0"></span>
-                </span>
-              </h1>
-              <p className="text-xl md:text-2xl text-[#1D3557] dark:text-gray-300 mb-10 max-w-3xl mx-auto drop-shadow-sm">
-                ¡Potencia tu Negocio con Vantyx!
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-                <AnimatedButton
-                  className="vantyx-btn-primary px-8 py-3 text-lg shadow-lg"
-                  onClick={() => {
-                    const contactSection = document.getElementById("contacto")
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: "smooth" })
-                    }
-                  }}
-                >
-                  Comienza ahora
-                </AnimatedButton>
-                <AnimatedButton
-                  variant="outline"
-                  className="vantyx-btn-outline px-8 py-3 text-lg shadow-lg bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm"
-                  onClick={() => window.open("https://wa.me/543794601984", "_blank")}
-                >
-                  Contacta a un Asesor
-                </AnimatedButton>
-              </div>
-            </SlideUp>
-          </div>
-        </section>
-
-        {/* Dashboard Preview - Actualizado con la nueva imagen */}
+        {/* Dashboard Preview */}
         <section className="py-12 bg-[#F7F7F7] dark:bg-gray-800">
           <div className="container mx-auto px-4 md:px-6">
             <FadeIn>
@@ -608,7 +618,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Módulos Grid estilo Odoo - ACTUALIZADO */}
+        {/* Módulos Grid estilo Odoo */}
         <section id="modulos" className="py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4 md:px-6">
             <FadeIn className="text-center mb-16">
@@ -685,7 +695,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Gestión de Clientes (CRM) - SECCIÓN ACTUALIZADA */}
+        {/* Gestión de Clientes (CRM) */}
         <section className="py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center">
@@ -761,222 +771,135 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Vantyx Visual - SECCIÓN ACTUALIZADA */}
+        {/* Vantyx Visual con Carrusel de Facebook */}
         <section className="py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4 md:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <SlideInLeft>
-                <div className="text-center md:text-left">
-                  {/* Logo de Vantyx Visual */}
-                  <div className="mb-6 flex justify-center md:justify-start">
-                    <Image
-                      src="/vantyx-visual-logo.png"
-                      alt="Vantyx Visual Logo"
-                      width={200}
-                      height={120}
-                      className="h-auto"
-                    />
-                  </div>
-                  <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Vantyx Visual</h2>
-                  <h3 className="text-xl text-[#1D3557] dark:text-gray-300 mb-6">
-                    Impulsá tu marca con identidad propia
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-8">
-                    En Vantyx no solo te damos el sistema para gestionar tu negocio, también te ayudamos a mostrarlo al
-                    mundo. Con Vantyx Visual accedés a uniformes personalizados con tu logo (estampados o bordados) y
-                    bolsas de friselina diseñadas a medida para tu emprendimiento. Ideal para fortalecer tu imagen
-                    comercial desde el primer día.
-                  </p>
-                  <AnimatedButton
-                    className="vantyx-btn-primary px-6 py-3"
-                    onClick={() => {
-                      const contactSection = document.getElementById("contacto")
-                      if (contactSection) {
-                        contactSection.scrollIntoView({ behavior: "smooth" })
-                      }
-                    }}
-                  >
-                    Quiero mi identidad visual
-                  </AnimatedButton>
-                </div>
-              </SlideInLeft>
-              <SlideInRight>
-                <div className="rounded-lg overflow-hidden shadow-lg">
-                  <div className="relative">
-                    <Image
-                      src="/vantyx-visual-landing.png"
-                      alt="Vantyx Visual - Bolsas y uniformes personalizados para negocios"
-                      width={600}
-                      height={900}
-                      className="w-full h-auto rounded-lg"
-                      priority
-                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 40vw, 600px"
-                      style={{
-                        maxHeight: "80vh",
-                        objectFit: "contain",
-                      }}
-                    />
-                  </div>
-                </div>
-              </SlideInRight>
+            <FadeIn className="text-center mb-12">
+              <div className="mb-6 flex justify-center">
+                <Image
+                  src="/vantyx-visual-logo.png"
+                  alt="Vantyx Visual Logo"
+                  width={200}
+                  height={120}
+                  className="h-auto"
+                />
+              </div>
+              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Vantyx Visual</h2>
+              <h3 className="text-xl text-[#1D3557] dark:text-gray-300 mb-6">Impulsá tu marca con identidad propia</h3>
+              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+                En Vantyx no solo te damos el sistema para gestionar tu negocio, también te ayudamos a mostrarlo al
+                mundo. Con Vantyx Visual accedés a uniformes personalizados con tu logo (estampados o bordados) y bolsas
+                de friselina diseñadas a medida para tu emprendimiento. Ideal para fortalecer tu imagen comercial desde
+                el primer día.
+              </p>
+              <AnimatedButton
+                className="vantyx-btn-primary px-6 py-3"
+                onClick={() => {
+                  const contactSection = document.getElementById("contacto")
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
+              >
+                Quiero mi identidad visual
+              </AnimatedButton>
+            </FadeIn>
+
+            <div className="mt-12 max-w-2xl mx-auto">
+              <FacebookCarousel />
             </div>
           </div>
         </section>
 
-        {/* Precios */}
-        <section id="precios" className="py-16 bg-white dark:bg-gray-900">
+        {/* Tabla Comparativa de Precios */}
+        <section id="precios" className="py-20 bg-[#F7F7F7] dark:bg-gray-800 min-h-screen flex flex-col justify-center">
           <div className="container mx-auto px-4 md:px-6">
             <FadeIn className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">
-                Planes simples y transparentes
-              </h2>
+              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Compará nuestros planes</h2>
               <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Elige el plan que mejor se adapte a las necesidades de tu empresa.
+                Elegí el plan que mejor se adapte a las necesidades de tu empresa. Todos incluyen soporte y
+                actualizaciones.
               </p>
             </FadeIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <PricingCard
-                title="Básico"
-                price="$50.000"
-                description="Ideal para emprendedores y pequeñas empresas que están comenzando."
-                features={[
-                  {
-                    icon: <ShoppingCart size={18} />,
-                    text: "Catálogo y Gestión de Productos",
-                  },
-                  {
-                    icon: <Package size={18} />,
-                    text: "Gestión de Stock Básica",
-                  },
-                  {
-                    icon: <DollarSign size={18} />,
-                    text: "Caja y Bancos",
-                  },
-                  {
-                    icon: <Users size={18} />,
-                    text: "Hasta 3 usuarios",
-                  },
-                ]}
-                buttonText="Contratar"
-                buttonVariant="outline"
-              />
-              <PricingCard
-                title="Profesional"
-                price="$75.000"
-                description="Perfecto para empresas en crecimiento que necesitan más funcionalidades."
-                features={[
-                  {
-                    icon: <FileText size={18} />,
-                    text: "Todo lo del plan Básico",
-                  },
-                  {
-                    icon: <Calendar size={18} />,
-                    text: "Agenda y Planificación",
-                  },
-                  {
-                    icon: <Truck size={18} />,
-                    text: "Gestión de Compras",
-                  },
-                  {
-                    icon: <Clipboard size={18} />,
-                    text: "Proyectos y Tareas",
-                  },
-                  {
-                    icon: <BarChart4 size={18} />,
-                    text: "Informes Avanzados",
-                  },
-                ]}
-                buttonText="Contratar"
-                buttonVariant="default"
-                highlighted={true}
-              />
-              <PricingCard
-                title="Empresarial"
-                price="Consultar"
-                description="Para empresas establecidas que requieren soluciones completas y personalizadas."
-                features={[
-                  {
-                    icon: <FileText size={18} />,
-                    text: "Todo lo del plan Profesional",
-                  },
-                  {
-                    icon: <Building2 size={18} />,
-                    text: "Múltiples Sucursales",
-                  },
-                  {
-                    icon: <Users size={18} />,
-                    text: "RRHH y Nómina",
-                  },
-                  {
-                    icon: <DollarSign size={18} />,
-                    text: "Contabilidad Completa",
-                  },
-                  {
-                    icon: <BarChart4 size={18} />,
-                    text: "Business Intelligence",
-                  },
-                ]}
-                buttonText="Contratar"
-                buttonVariant="outline"
-              />
-              <PricingCard
-                title="Vantyx Visual"
-                price="Consultar"
-                description="Uniformes y bolsas personalizadas con el logo de tu negocio."
-                features={[
-                  {
-                    icon: <Paintbrush size={18} />,
-                    text: "Estampado en serigrafía o bordado",
-                  },
-                  {
-                    icon: <Palette size={18} />,
-                    text: "Diseño profesional de marca",
-                  },
-                  {
-                    icon: <ShoppingBag size={18} />,
-                    text: "Bolsas de friselina ecológicas",
-                  },
-                  {
-                    icon: <Truck size={18} />,
-                    text: "Entrega rápida y asesoramiento incluido",
-                  },
-                ]}
-                buttonText="Quiero este plan"
-                buttonVariant="outline"
-                onClickAction="visual"
-              />
+            <div className="pb-12">
+              <PricingComparisonTable />
             </div>
           </div>
         </section>
 
-        {/* Testimonios Section - SECCIÓN ACTUALIZADA */}
-        <section id="testimonios" className="py-16 bg-[#F7F7F7] dark:bg-gray-800">
+        {/* Testimonios Section Renovada */}
+        <section id="testimonios" className="py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4 md:px-6">
             <FadeIn className="text-center mb-16">
               <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">
                 Lo que dicen nuestros clientes
               </h2>
               <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Empresas de diversos sectores confían en Vantyx para optimizar sus operaciones.
+                Empresas líderes en diferentes industrias han transformado sus operaciones con Vantyx
               </p>
             </FadeIn>
-            <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               <StaggerItem>
-                <TestimonialCard imageSrc="/luisa_fernandez.png" altText="Testimonio de Luisa Fernández de Acme S.A." />
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 h-full flex flex-col"
+                >
+                  <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+                    <Image src="/maria-elena-rodriguez.png" alt="María Elena Rodríguez" fill className="object-cover" />
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1 italic">
+                    "Vantyx revolucionó nuestra gestión. En solo 3 meses aumentamos nuestra eficiencia operativa en un
+                    40% y redujimos los errores administrativos a cero."
+                  </p>
+                  <div className="text-center pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <h4 className="font-bold text-[#1D3557] dark:text-white">María Elena Rodríguez</h4>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">Directora General - InnovateCorp</span>
+                  </div>
+                </motion.div>
               </StaggerItem>
               <StaggerItem>
-                <TestimonialCard imageSrc="/martin_gonzalez.png" altText="Testimonio de Martín González de TechNow" />
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 h-full flex flex-col"
+                >
+                  <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+                    <Image src="/carlos-mendoza.png" alt="Carlos Mendoza" fill className="object-cover" />
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1 italic">
+                    "La integración de todos nuestros procesos en una sola plataforma fue un cambio total. Ahora tenemos
+                    control total sobre inventario, facturación y clientes."
+                  </p>
+                  <div className="text-center pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <h4 className="font-bold text-[#1D3557] dark:text-white">Carlos Mendoza</h4>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">CEO - TechSolutions Argentina</span>
+                  </div>
+                </motion.div>
               </StaggerItem>
               <StaggerItem>
-                <TestimonialCard imageSrc="/carolina_lopez.png" altText="Testimonio de Carolina López de Grupo Eiite" />
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 h-full flex flex-col"
+                >
+                  <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+                    <Image src="/ana-lucia-fernandez.png" alt="Ana Lucía Fernández" fill className="object-cover" />
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1 italic">
+                    "Como emprendedora, Vantyx me permitió profesionalizar mi negocio desde el día uno. El soporte
+                    personalizado hizo toda la diferencia en nuestro crecimiento."
+                  </p>
+                  <div className="text-center pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <h4 className="font-bold text-[#1D3557] dark:text-white">Ana Lucía Fernández</h4>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">Fundadora - EcoEmprendimientos</span>
+                  </div>
+                </motion.div>
               </StaggerItem>
             </Stagger>
           </div>
         </section>
 
-        {/* FAQ Section - NUEVA SECCIÓN */}
-        <section id="faq" className="py-16 bg-white dark:bg-gray-900">
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-[#F7F7F7] dark:bg-gray-800">
           <div className="container mx-auto px-4 md:px-6">
             <FadeIn className="text-center mb-16">
               <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Preguntas Frecuentes</h2>
@@ -989,7 +912,7 @@ export default function Home() {
         </section>
 
         {/* Contacto Section */}
-        <section id="contacto" className="py-16 bg-[#F7F7F7] dark:bg-gray-800">
+        <section id="contacto" className="py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4 md:px-6">
             <FadeIn className="text-center mb-16">
               <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Contáctanos</h2>
@@ -1068,7 +991,6 @@ export default function Home() {
                 </div>
               </SlideInLeft>
 
-              {/* Formulario de contacto */}
               <SlideInRight>
                 <GoogleForm />
               </SlideInRight>
