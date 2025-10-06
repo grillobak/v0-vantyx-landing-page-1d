@@ -42,8 +42,6 @@ import { FaqAccordion } from "@/components/faq-accordion"
 import type { FaqItem } from "@/components/faq-accordion"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SectorCard } from "@/components/sector-card"
-import { Chatbot } from "@/components/chatbot"
-import { ChatbotTest } from "@/components/chatbot-test"
 import Image from "next/image"
 import { useState } from "react"
 import { motion } from "framer-motion"
@@ -52,6 +50,7 @@ import { motion } from "framer-motion"
 import { EnhancedHeroSection } from "@/components/enhanced-hero-section"
 import { PricingComparisonTable } from "@/components/pricing-comparison-table"
 import { FacebookCarousel } from "@/components/facebook-carousel"
+import { VantyxChatbot } from "@/components/vantyx-chatbot"
 
 export default function Home() {
   // Módulos con sus descripciones
@@ -547,9 +546,6 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Componente de test temporal - REMOVER EN PRODUCCIÓN */}
-      {process.env.NODE_ENV === "development" && <ChatbotTest />}
-
       {/* Navegación simple estilo Odoo */}
       <nav className="py-4 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 relative z-50">
         <div className="container mx-auto flex justify-between items-center px-4 md:px-6">
@@ -1138,8 +1134,8 @@ export default function Home() {
       {/* Botón flotante de WhatsApp */}
       <WhatsAppButton />
 
-      {/* Chatbot */}
-      <Chatbot />
+      {/* Chatbot de Vantyx */}
+      <VantyxChatbot />
     </div>
   )
 }
