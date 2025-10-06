@@ -3,8 +3,9 @@
 import { useEffect } from "react"
 import { motion } from "framer-motion"
 import { Facebook } from "lucide-react"
+import dynamic from "next/dynamic"
 
-export function FacebookCarousel() {
+function FacebookCarouselComponent() {
   useEffect(() => {
     // Cargar el SDK de Facebook
     if (window.FB) {
@@ -74,3 +75,12 @@ declare global {
     FB: any
   }
 }
+
+export const FacebookCarousel = dynamic(() => Promise.resolve(FacebookCarouselComponent), {
+  ssr: false,
+  loading: () => (
+    <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 animate-pulse">
+      <div className="h-64 bg-gray-200 dark:bg-gray-800 rounded"></div>
+    </div>
+  ),
+})

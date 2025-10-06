@@ -52,6 +52,9 @@ import { PricingComparisonTable } from "@/components/pricing-comparison-table"
 import { FacebookCarousel } from "@/components/facebook-carousel"
 import { VantyxChatbot } from "@/components/vantyx-chatbot"
 
+export const dynamic = "force-static"
+export const revalidate = false
+
 export default function Home() {
   // Módulos con sus descripciones
   const modules = [
