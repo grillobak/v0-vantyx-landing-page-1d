@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-import dynamic from "next/dynamic"
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -264,7 +263,7 @@ Puedo responder sobre:
 ¿Tienes alguna pregunta específica? Estoy aquí para ayudarte 😊`,
 }
 
-function VantyxChatbotComponent() {
+export function VantyxChatbot() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -565,7 +564,3 @@ O si prefieres, puedes contactarnos directamente:
     </>
   )
 }
-
-export const VantyxChatbot = dynamic(() => Promise.resolve(VantyxChatbotComponent), {
-  ssr: false,
-})

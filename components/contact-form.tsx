@@ -75,8 +75,6 @@ export function ContactForm() {
 
   // Cargar el script de reCAPTCHA
   useEffect(() => {
-    if (typeof window === "undefined") return
-
     // Verificar si el script ya está cargado
     if (window.grecaptcha) {
       setRecaptchaLoaded(true)
