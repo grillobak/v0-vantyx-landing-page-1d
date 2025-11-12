@@ -18,12 +18,20 @@ const formSchema = z.object({
   name: z.string().min(2, {
     message: "El nombre debe tener al menos 2 caracteres.",
   }),
-  email: z.string().email({
-    message: "Por favor ingrese un email válido.",
-  }),
-  phone: z.string().min(8, {
-    message: "Por favor ingrese un número de teléfono válido.",
-  }),
+  email: z
+    .string()
+    .email({
+      message: "Por favor ingrese un email válido.",
+    })
+    .min(1, { message: "El email es obligatorio." }),
+  phone: z
+    .string()
+    .regex(/^[0-9\s\-+$$$$]+$/, {
+      message: "Por favor ingrese un número válido.",
+    })
+    .min(8, {
+      message: "Por favor ingrese un número de teléfono válido.",
+    }),
   company: z.string().min(2, {
     message: "Por favor ingrese el nombre de su empresa.",
   }),
@@ -158,15 +166,16 @@ export function ContactForm() {
     <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
       <h3 className="text-xl font-semibold text-[#1D3557] dark:text-[#F4A261] mb-4">Contáctanos</h3>
       <p className="text-gray-600 dark:text-gray-400 mb-6">
-        Complete el formulario y un asesor se pondrá en contacto con usted a la brevedad.
+        Complete el formulario y un asesor se pondrá en contacto con usted a la brevedad. Los campos marcados con * son
+        obligatorios.
       </p>
 
       {isSuccess ? (
         <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg text-center">
           <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
-          <h4 className="text-lg font-medium text-green-800 dark:text-green-300 mb-2">¡Mensaje enviado con éxito!</h4>
+          <h4 className="text-lg font-medium text-green-800 dark:text-green-300 mb-2">¡Gracias por contactarnos!</h4>
           <p className="text-green-600 dark:text-green-400">
-            Gracias por contactarnos. Un asesor se comunicará contigo a la brevedad.
+            Hemos recibido tu mensaje. Un asesor se comunicará contigo en las próximas 24 horas.
           </p>
         </div>
       ) : (
@@ -194,7 +203,7 @@ export function ContactForm() {
                   <FormItem>
                     <FormLabel>Email *</FormLabel>
                     <FormControl>
-                      <Input placeholder="ejemplo@empresa.com" {...field} required />
+                      <Input type="email" placeholder="ejemplo@empresa.com" {...field} required />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -250,6 +259,7 @@ export function ContactForm() {
                       <SelectItem value="inventory">Gestión de inventario</SelectItem>
                       <SelectItem value="billing">Facturación electrónica</SelectItem>
                       <SelectItem value="reports">Reportes y análisis</SelectItem>
+                      <SelectItem value="web">Desarrollo web profesional</SelectItem>
                       <SelectItem value="visual">
                         Asesoramiento sobre Vantyx Visual (uniformes y bolsas personalizadas)
                       </SelectItem>
@@ -291,9 +301,9 @@ export function ContactForm() {
               )}
             </Button>
             <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-2">
-              Al enviar este formulario, acepta que sus datos sean procesados para contactarlo.
+              Al enviar este formulario, acepta que sus datos sean procesados para contactarlo según nuestra política de
+              privacidad.
             </p>
-            <div id="recaptcha-container" className="flex justify-center"></div>
           </form>
         </Form>
       )}

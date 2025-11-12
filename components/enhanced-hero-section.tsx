@@ -74,10 +74,17 @@ export function EnhancedHeroSection() {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
+            <p className="text-xl text-gray-600 dark:text-gray-400 mb-4 max-w-2xl">
               Gestiona contabilidad, inventario, facturación y CRM desde una única plataforma intuitiva. Diseñada
               específicamente para empresas argentinas.
             </p>
+
+            {/* Prominent Subtitle with Differential */}
+            <div className="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/30 dark:to-blue-900/30 rounded-lg p-4 mb-8 border border-cyan-200 dark:border-cyan-800">
+              <p className="text-lg font-semibold text-[#1D3557] dark:text-[#F4A261] text-center">
+                🎯 Automatiza tu gestión con un solo sistema y soporte local en Argentina
+              </p>
+            </div>
 
             {/* CTA - Solo Ver Módulos */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12">

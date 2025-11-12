@@ -150,7 +150,7 @@ export default function Home() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"
+            d="M11 3.055A9.001 9.001 0 110 9H11V3.055z"
           />
           <path
             strokeLinecap="round"
@@ -692,7 +692,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Navegación simple estilo Odoo */}
-      <nav className="py-4 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 relative z-50">
+      <nav className="sticky top-0 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 relative z-50 py-4 shadow-md">
         <div className="container mx-auto flex justify-between items-center px-4 md:px-6">
           <div className="flex items-center">
             <Logo width={180} height={60} />
@@ -754,7 +754,7 @@ export default function Home() {
               <div className="bg-white dark:bg-gray-900 rounded-lg shadow-xl overflow-hidden">
                 <Image
                   src="/dashboard-vantyx.png"
-                  alt="Vantyx Dashboard"
+                  alt="Dashboard Vantyx - Panel principal del sistema de gestión ERP/CRM"
                   width={1200}
                   height={600}
                   className="w-full h-auto"
@@ -793,6 +793,16 @@ export default function Home() {
           </div>
         </section>
 
+        {/* CTA - Después de Módulos */}
+        <section className="py-8 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h3 className="text-2xl font-bold text-[#1D3557] dark:text-white mb-4">¿Viste algo que te interesó?</h3>
+            <Link href="#contacto" className="inline-block vantyx-btn-primary px-8 py-3 rounded-lg font-semibold">
+              Solicitar una demostración
+            </Link>
+          </div>
+        </section>
+
         {/* Características principales */}
         <section className="py-16 bg-[#F7F7F7] dark:bg-gray-800">
           <div className="container mx-auto px-4 md:px-6">
@@ -801,7 +811,7 @@ export default function Home() {
                 <div className="rounded-lg overflow-hidden shadow-lg">
                   <Image
                     src="/fc-electronica.jpeg"
-                    alt="Facturación Electrónica"
+                    alt="Facturación Electrónica - Sistema de gestión de facturas en Vantyx"
                     width={600}
                     height={400}
                     className="w-full h-auto"
@@ -850,7 +860,7 @@ export default function Home() {
                 <div className="mb-8 flex justify-center">
                   <Image
                     src="/modulo-clientes.png"
-                    alt="Módulo de Gestión de Clientes"
+                    alt="Módulo de Gestión de Clientes CRM - Seguimiento de oportunidades de venta"
                     width={800}
                     height={500}
                     className="rounded-lg shadow-md w-full"
@@ -915,6 +925,18 @@ export default function Home() {
                 />
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* CTA - Después de Sectores */}
+        <section className="py-8 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h3 className="text-2xl font-bold text-[#1D3557] dark:text-white mb-4">
+              ¿Es tu sector? Conoce cómo podemos ayudarte
+            </h3>
+            <Link href="#contacto" className="inline-block vantyx-btn-primary px-8 py-3 rounded-lg font-semibold">
+              Habla con un asesor
+            </Link>
           </div>
         </section>
 
@@ -997,7 +1019,7 @@ export default function Home() {
               <div className="mb-6 flex justify-center">
                 <Image
                   src="/vantyx-visual-logo.png"
-                  alt="Vantyx Visual Logo"
+                  alt="Logo Vantyx Visual - Uniformes y bolsas personalizadas"
                   width={200}
                   height={120}
                   className="h-auto"
@@ -1044,6 +1066,18 @@ export default function Home() {
             <div className="pb-12">
               <PricingComparisonTable />
             </div>
+          </div>
+        </section>
+
+        {/* CTA - Después de Precios */}
+        <section className="py-8 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h3 className="text-2xl font-bold text-[#1D3557] dark:text-white mb-4">
+              Elige el plan perfecto para tu negocio
+            </h3>
+            <Link href="#contacto" className="inline-block vantyx-btn-primary px-8 py-3 rounded-lg font-semibold">
+              Solicitar ahora
+            </Link>
           </div>
         </section>
 
@@ -1179,6 +1213,7 @@ export default function Home() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-[#1D3557] dark:text-[#F4A261] hover:text-[#2A4A73] dark:hover:text-[#E08C4C]"
+                          aria-label="Síguenos en Facebook"
                         >
                           <Facebook className="h-6 w-6" />
                         </a>
@@ -1189,6 +1224,7 @@ export default function Home() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-[#1D3557] dark:text-[#F4A261] hover:text-[#2A4A73] dark:hover:text-[#E08C4C]"
+                          aria-label="Síguenos en Instagram"
                         >
                           <Instagram className="h-6 w-6" />
                         </a>
@@ -1199,6 +1235,7 @@ export default function Home() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-[#1D3557] dark:text-[#F4A261] hover:text-[#2A4A73] dark:hover:text-[#E08C4C]"
+                          aria-label="Síguenos en TikTok"
                         >
                           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
@@ -1328,6 +1365,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-[#F4A261] transition-colors"
+                    aria-label="Síguenos en Facebook"
                   >
                     <Facebook className="h-5 w-5" />
                   </a>
@@ -1336,6 +1374,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-[#F4A261] transition-colors"
+                    aria-label="Síguenos en Instagram"
                   >
                     <Instagram className="h-5 w-5" />
                   </a>
@@ -1344,6 +1383,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-[#F4A261] transition-colors"
+                    aria-label="Síguenos en TikTok"
                   >
                     <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
@@ -1355,6 +1395,19 @@ export default function Home() {
           </div>
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
             <p>© {new Date().getFullYear()} Vantyx. Todos los derechos reservados.</p>
+            <div className="mt-4 flex flex-wrap justify-center gap-4">
+              <a href="#" className="hover:text-[#F4A261] transition-colors">
+                Política de Privacidad
+              </a>
+              <span className="text-gray-700">|</span>
+              <a href="#" className="hover:text-[#F4A261] transition-colors">
+                Términos de Uso
+              </a>
+              <span className="text-gray-700">|</span>
+              <a href="#" className="hover:text-[#F4A261] transition-colors">
+                Cookies
+              </a>
+            </div>
           </div>
         </div>
       </footer>
