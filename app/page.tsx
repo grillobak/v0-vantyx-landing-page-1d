@@ -51,6 +51,8 @@ import { EnhancedHeroSection } from "@/components/enhanced-hero-section"
 import { PricingComparisonTable } from "@/components/pricing-comparison-table"
 import { FacebookCarousel } from "@/components/facebook-carousel"
 import { VantyxChatbot } from "@/components/vantyx-chatbot"
+import { SpecialOfferCard } from "@/components/special-offer-card"
+import { WebServiceCard } from "@/components/web-service-card" // Importado WebServiceCard
 
 export default function Home() {
   // Módulos con sus descripciones
@@ -330,7 +332,7 @@ export default function Home() {
     {
       question: "¿Cuánto cuesta Vantyx?",
       answer:
-        "Tenemos planes desde $50.000/mes. El plan Básico incluye funcionalidades esenciales, el Profesional ($75.000) agrega herramientas avanzadas, y el Empresarial es personalizado según tus necesidades. Todos los planes incluyen soporte.",
+        "Tenemos planes desde $87.000/mes. El plan Emprendedor cuesta $87.000/mes, el plan PyME cuesta $112.000/mes, y el plan Empresarial es personalizado según tus necesidades. Todos los planes incluyen soporte. Además, ofrecemos el Paquete Web Presencia Básica a $170.000 (sin incluir hosting mensual) para quienes necesitan presencia online profesional.",
       category: "precios",
       icon: <DollarSign className="h-5 w-5" />,
     },
@@ -389,6 +391,55 @@ export default function Home() {
         "Absolutamente. Usamos encriptación de última generación, backups automáticos diarios, servidores seguros y cumplimos con todas las normativas de protección de datos. Tu información está totalmente protegida.",
       category: "integracion",
       icon: <Shield className="h-5 w-5" />,
+    },
+    {
+      question: "¿Qué ofrece Vantyx en desarrollo web?",
+      answer:
+        "Creamos sitios web profesionales para pymes, emprendedores y profesionales. Ofrecemos: Sitios Institucionales para mostrar tu empresa, Tiendas Online (E-commerce) con pasarelas de pago integradas, Landing Pages para campañas específicas, y Mantenimiento y Soporte continuo. Todo diseñado con foco en resultados, velocidad, SEO y adaptabilidad a todos los dispositivos.",
+      category: "funcionalidades",
+      icon: <Zap className="h-5 w-5" />,
+    },
+    {
+      question: "¿Cuál es el Paquete Web Presencia Básica y cuánto cuesta?",
+      answer:
+        "Es una oferta especial de $170.000 (sin incluir el costo mensual de hosting) que incluye: 1 página principal + 3 secciones, formulario de contacto funcional, diseño adaptable a celulares y tablets, entrega rápida y soporte inicial incluido. Es perfecto para pequeños negocios que necesitan presencia profesional online.",
+      category: "precios",
+      icon: <DollarSign className="h-5 w-5" />,
+    },
+    {
+      question: "¿Cuál es la diferencia entre un Sitio Institucional, una Tienda Online y una Landing Page?",
+      answer:
+        "Un Sitio Institucional presenta tu empresa con información completa, galerías y formularios de contacto. Una Tienda Online (E-commerce) permite vender productos online con catálogo, carrito de compras y cobros integrados. Una Landing Page es una página única optimizada para convertir visitantes en clientes para una campaña específica. Cada una tiene objetivos diferentes según tus necesidades.",
+      category: "funcionalidades",
+      icon: <Zap className="h-5 w-5" />,
+    },
+    {
+      question: "¿Mi sitio web estará optimizado para buscadores (SEO)?",
+      answer:
+        "Sí. Todos nuestros sitios web se desarrollan con mejores prácticas de SEO: estructura HTML semántica, velocidad de carga optimizada, URLs amigables, meta tags, sitemaps y optimización de imágenes. Esto ayuda a que tu sitio aparezca mejor posicionado en Google y reciba más visitantes.",
+      category: "funcionalidades",
+      icon: <Zap className="h-5 w-5" />,
+    },
+    {
+      question: "¿Puedo editar el contenido de mi sitio web después de que se entregue?",
+      answer:
+        "Sí. Todos nuestros sitios incluyen panel de administración intuitivo donde podés editar contenidos, imágenes, precios y más sin necesidad de conocimientos técnicos. También ofrecemos servicio de mantenimiento donde nos encargamos de los cambios por ti.",
+      category: "soporte",
+      icon: <Settings className="h-5 w-5" />,
+    },
+    {
+      question: "¿Cuánto tiempo tarda la entrega de un sitio web?",
+      answer:
+        "El Paquete Web Presencia Básica se entrega en 2-3 semanas. Sitios más complejos pueden tomar 4-8 semanas dependiendo de los requisitos y funcionalidades. Mantenemos comunicación constante durante todo el proceso de desarrollo.",
+      category: "soporte",
+      icon: <Settings className="h-5 w-5" />,
+    },
+    {
+      question: "¿Incluyen hosting en los servicios web?",
+      answer:
+        "El desarrollo web no incluye hosting mensual. El Paquete Web Presencia Básica tiene un costo único de $170.000. El hosting se contrata por separado según tus necesidades. Te recomendamos opciones confiables y manejamos la instalación del sitio por ti.",
+      category: "precios",
+      icon: <DollarSign className="h-5 w-5" />,
     },
   ]
 
@@ -536,6 +587,8 @@ export default function Home() {
 
   const [flippedSectorIndex, setFlippedSectorIndex] = useState<number | null>(null)
 
+  const [flippedWebServiceIndex, setFlippedWebServiceIndex] = useState<number | null>(null)
+
   const handleSectorFlip = (index: number) => {
     if (flippedSectorIndex === index) {
       setFlippedSectorIndex(null)
@@ -543,6 +596,98 @@ export default function Home() {
       setFlippedSectorIndex(index)
     }
   }
+
+  const handleWebServiceFlip = (index: number) => {
+    if (flippedWebServiceIndex === index) {
+      setFlippedWebServiceIndex(null)
+    } else {
+      setFlippedWebServiceIndex(index)
+    }
+  }
+
+  const webServices = [
+    {
+      title: "Sitios Institucionales",
+      description: "Mostrá tu empresa con una imagen profesional.",
+      detailedDescription:
+        "Creamos sitios web profesionales que reflejan la identidad de tu empresa. Con diseño moderno, funcionalidades robustas y optimización para buscadores, tu sitio institucional será la cara digital de tu negocio. Incluye formularios de contacto, galerías de proyectos, testimonios y más.",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-12 w-12"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+          />
+        </svg>
+      ),
+    },
+    {
+      title: "Tiendas Online (E-commerce)",
+      description: "Vendé tus productos con gestión fácil y cobros integrados.",
+      detailedDescription:
+        "Plataformas de e-commerce completas con catálogo de productos, carrito de compras, pasarela de pagos integrada y panel de administración intuitivo. Gestiona inventario, seguimiento de pedidos, reportes de ventas y notificaciones automáticas. Todo diseñado para convertir visitas en ventas.",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-12 w-12"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Landing Pages",
+      description: "Promocioná servicios o campañas con páginas rápidas y efectivas.",
+      detailedDescription:
+        "Landing pages de alta conversión optimizadas para campañas específicas. Diseño enfocado en el usuario, copywriting persuasivo, formularios inteligentes y llamadas a la acción claras. Análisis de comportamiento, A/B testing e integración con tus herramientas de marketing.",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-12 w-12"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Mantenimiento y Soporte",
+      description: "Nos encargamos de que tu sitio funcione 24/7.",
+      detailedDescription:
+        "Soporte técnico continuo para tu sitio web. Actualizaciones de seguridad, backups automáticos, monitoreo de rendimiento y corrección rápida de errores. Incluye optimización de velocidad, gestión de dominios, certificados SSL y consultoría en mejoras. Tu sitio siempre operativo y seguro.",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-12 w-12"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+          />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ),
+    },
+  ]
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -558,6 +703,12 @@ export default function Home() {
               className="text-[#1D3557] dark:text-gray-300 hover:text-[#F4A261] dark:hover:text-[#F4A261] transition-colors"
             >
               Módulos
+            </Link>
+            <Link
+              href="#web-dev"
+              className="text-[#1D3557] dark:text-gray-300 hover:text-[#F4A261] dark:hover:text-[#F4A261] transition-colors"
+            >
+              Desarrollo Web
             </Link>
             <Link
               href="#sectores"
@@ -763,6 +914,78 @@ export default function Home() {
                   onFlip={() => handleSectorFlip(index)}
                 />
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Web Dev Section - Restructured */}
+        <section
+          id="web-dev"
+          className="py-16 bg-white dark:bg-gray-900 relative"
+          style={{
+            backgroundImage: 'url("/web-development-workspace-with-laptop-and-digital-.jpg")',
+            backgroundAttachment: "fixed",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        >
+          <div className="absolute inset-0 bg-white/85 dark:bg-gray-900/90" />
+
+          <div className="container mx-auto px-4 md:px-6 relative z-10">
+            <FadeIn className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Desarrollo Web Profesional</h2>
+              <h3 className="text-xl text-[#1D3557] dark:text-gray-300 mb-4">
+                Impulsá tu negocio con una página web moderna y funcional
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-6">
+                En Vantyx creamos sitios web pensados para pymes, profesionales y emprendedores que buscan presencia
+                online real. Diseñamos y desarrollamos páginas web a medida con enfoque en resultados: velocidad,
+                posicionamiento, diseño atractivo y adaptado a todos los dispositivos.
+              </p>
+            </FadeIn>
+
+            {/* Tarjetas de servicios en grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {webServices.map((service, index) => (
+                <WebServiceCard
+                  key={index}
+                  title={service.title}
+                  description={service.description}
+                  detailedDescription={service.detailedDescription}
+                  icon={service.icon}
+                  isFlipped={flippedWebServiceIndex === index}
+                  onFlip={() => handleWebServiceFlip(index)}
+                />
+              ))}
+            </div>
+
+            <div className="mb-16">
+              <SpecialOfferCard
+                onClick={() => {
+                  const contactSection = document.getElementById("contacto")
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
+              />
+            </div>
+
+            {/* CTA final */}
+            <div className="text-center">
+              <FadeIn>
+                <button
+                  onClick={() => {
+                    const contactSection = document.getElementById("contacto")
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: "smooth" })
+                    }
+                  }}
+                  className="vantyx-btn-primary px-8 py-3 text-lg font-semibold"
+                >
+                  Quiero más información
+                </button>
+              </FadeIn>
             </div>
           </div>
         </section>
@@ -1051,6 +1274,11 @@ export default function Home() {
                   <li>
                     <Link href="#modulos" className="hover:text-[#F4A261] transition-colors">
                       Módulos
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#web-dev" className="hover:text-[#F4A261] transition-colors">
+                      Desarrollo Web
                     </Link>
                   </li>
                   <li>

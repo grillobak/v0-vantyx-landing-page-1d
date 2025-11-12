@@ -111,7 +111,7 @@ export function PricingComparisonTable() {
         >
           <h3 className="text-2xl font-bold text-[#1D3557] dark:text-white mb-2">Emprendedor</h3>
           <div className="mb-4">
-            <span className="text-4xl font-bold text-[#1D3557] dark:text-[#F4A261]">$50.000</span>
+            <span className="text-4xl font-bold text-[#1D3557] dark:text-[#F4A261]">$87.000</span>
             <span className="text-gray-500 dark:text-gray-400">/mes</span>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
@@ -150,7 +150,7 @@ export function PricingComparisonTable() {
           </div>
           <h3 className="text-2xl font-bold text-[#1D3557] dark:text-white mb-2 mt-2">PyME</h3>
           <div className="mb-4">
-            <span className="text-4xl font-bold text-[#1D3557] dark:text-[#F4A261]">$75.000</span>
+            <span className="text-4xl font-bold text-[#1D3557] dark:text-[#F4A261]">$112.000</span>
             <span className="text-gray-500 dark:text-gray-400">/mes</span>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">Perfecto para empresas en crecimiento</p>
@@ -224,7 +224,7 @@ export function PricingComparisonTable() {
                       <div className="space-y-3 flex flex-col items-center">
                         <div className="text-xl font-bold text-[#1D3557] dark:text-white">Emprendedor</div>
                         <div>
-                          <span className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261]">$50.000</span>
+                          <span className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261]">$87.000</span>
                           <span className="text-sm text-gray-500 dark:text-gray-400">/mes</span>
                         </div>
                         <p className="text-xs text-gray-600 dark:text-gray-400 px-2">Para emprendimientos</p>
@@ -251,7 +251,7 @@ export function PricingComparisonTable() {
                       <div className="space-y-3 flex flex-col items-center pt-2">
                         <div className="text-xl font-bold text-[#1D3557] dark:text-white">PyME</div>
                         <div>
-                          <span className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261]">$75.000</span>
+                          <span className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261]">$112.000</span>
                           <span className="text-sm text-gray-500 dark:text-gray-400">/mes</span>
                         </div>
                         <p className="text-xs text-gray-600 dark:text-gray-400 px-2">Para empresas en crecimiento</p>
