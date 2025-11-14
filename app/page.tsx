@@ -664,7 +664,7 @@ export default function Home() {
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.066z"
           />
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
@@ -856,17 +856,13 @@ export default function Home() {
               <SlideInRight>
                 <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-6">Facturación Electrónica</h2>
                 <p className="text-gray-600 dark:text-gray-400 mb-6">
-                  Genera facturas electrónicas de forma rápida y sencilla, cumpliendo con todos los requisitos de ARCA
-                  (consultar disponibilidad). Automatiza el proceso de facturación y ahorra tiempo valioso para tu
-                  negocio.
+                  Automatizá la emisión de comprobantes ARCA en un mismo panel. Generá facturas A/B/C, notas de crédito y débito, remitos y comprobantes fiscales con CAE y QR instantáneos, validaciones según tipo de cliente y respaldo seguro por 10 años.
                 </p>
                 <ul className="space-y-3">
                   {[
-                    "Integración con ARCA (consultar disponibilidad)",
-                    "Generación de facturas A, B, C y E",
-                    "Notas de crédito y débito",
-                    "Envío automático por email",
-                    "Reportes de facturación",
+                    "CAE + QR al instante para todos los comprobantes homologados",
+                    "Dashboard con métricas en vivo y Libro IVA listo para AFIP",
+                    "Suscripciones automáticas, remitos electrónicos y soporte online/offline",
                   ].map((item, index) => (
                     <li key={index} className="flex items-start">
                       <Check className="h-5 w-5 text-[#F4A261] dark:text-[#F4A261] mr-2 mt-0.5" />
