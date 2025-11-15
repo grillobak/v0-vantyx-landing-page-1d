@@ -606,4 +606,848 @@ export default function Home() {
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            d="M12
+            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+          />
+        </svg>
+      ),
+    },
+    {
+      title: "Tiendas Online (E-commerce)",
+      description: "Vendé tus productos con gestión fácil y cobros integrados.",
+      detailedDescription:
+        "Plataformas de e-commerce completas con catálogo de productos, carrito de compras, pasarela de pagos integrada y panel de administración intuitivo. Gestiona inventario, seguimiento de pedidos, reportes de ventas y notificaciones automáticas. Todo diseñado para convertir visitas en ventas.",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-12 w-12"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Landing Pages",
+      description: "Promocioná servicios o campañas con páginas rápidas y efectivas.",
+      detailedDescription:
+        "Landing pages de alta conversión optimizadas para campañas específicas. Diseño enfocado en el usuario, copywriting persuasivo, formularios inteligentes y llamadas a la acción claras. Análisis de comportamiento, A/B testing e integración con tus herramientas de marketing.",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-12 w-12"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Mantenimiento y Soporte",
+      description: "Nos encargamos de que tu sitio funcione 24/7.",
+      detailedDescription:
+        "Soporte técnico continuo para tu sitio web. Actualizaciones de seguridad, backups automáticos, monitoreo de rendimiento y corrección rápida de errores. Incluye optimización de velocidad, gestión de dominios, certificados SSL y consultoría en mejoras. Tu sitio siempre operativo y seguro.",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-12 w-12"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.066z"
+          />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ),
+    },
+  ]
+
+  return (
+    <div className="flex min-h-screen flex-col">
+      {/* Navegación simple estilo Odoo */}
+      <nav className="sticky top-0 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 relative z-50 py-4 shadow-md">
+        <div className="container mx-auto flex justify-between items-center px-4 md:px-6">
+          <div className="flex items-center">
+            <Logo width={180} height={60} />
+          </div>
+          <div className="hidden md:flex space-x-8">
+            <Link
+              href="#modulos"
+              className="text-[#1D3557] dark:text-gray-300 hover:text-[#F4A261] dark:hover:text-[#F4A261] transition-colors"
+            >
+              Módulos
+            </Link>
+            <Link
+              href="#web-dev"
+              className="text-[#1D3557] dark:text-gray-300 hover:text-[#F4A261] dark:hover:text-[#F4A261] transition-colors"
+            >
+              Desarrollo Web
+            </Link>
+            <Link
+              href="#sectores"
+              className="text-[#1D3557] dark:text-gray-300 hover:text-[#F4A261] dark:hover:text-[#F4A261] transition-colors"
+            >
+              Sectores
+            </Link>
+            <Link
+              href="#precios"
+              className="text-[#1D3557] dark:text-gray-300 hover:text-[#F4A261] dark:hover:text-[#F4A261] transition-colors"
+            >
+              Precios
+            </Link>
+            <Link
+              href="#contacto"
+              className="text-[#1D3557] dark:text-gray-300 hover:text-[#F4A261] dark:hover:text-[#F4A261] transition-colors"
+            >
+              Contacto
+            </Link>
+          </div>
+          <div className="flex items-center space-x-4">
+            <ThemeToggle />
+            <a
+              href="https://wa.me/543794601984"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 vantyx-btn-primary rounded-md"
+            >
+              Solicitar Demo
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <main className="flex-1">
+        {/* Hero Section Mejorado */}
+        <EnhancedHeroSection />
+
+        {/* Dashboard Preview */}
+        <section className="py-12 bg-[#F7F7F7] dark:bg-gray-800">
+          <div className="container mx-auto px-4 md:px-6">
+            <FadeIn>
+              <div className="bg-white dark:bg-gray-900 rounded-lg shadow-xl overflow-hidden">
+                <Image
+                  src="/dashboard-vantyx.png"
+                  alt="Dashboard Vantyx - Panel principal del sistema de gestión ERP/CRM"
+                  width={1200}
+                  height={600}
+                  className="w-full h-auto"
+                  priority
+                />
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* Módulos Grid estilo Odoo */}
+        <section id="modulos" className="py-16 bg-white dark:bg-gray-900">
+          <div className="container mx-auto px-4 md:px-6">
+            <FadeIn className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">
+                Todos los Módulos que necesitas
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Nuestro sistema de gestión está diseñado para adaptarse a las necesidades específicas de las PyMEs
+                argentinas.
+              </p>
+            </FadeIn>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+              {modules.map((module, index) => (
+                module.isSpecial ? (
+                  <motion.div
+                    key={index}
+                    whileHover={{ y: -5 }}
+                    className="flex flex-col items-start text-left p-4 bg-white dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all duration-300 feature-card cursor-pointer"
+                    onClick={() => toggleModule(index)}
+                  >
+                    <div className="text-[#1D3557] dark:text-[#F4A261] mb-3">{module.icon}</div>
+                    <h3 className="text-sm font-medium text-[#1D3557] dark:text-gray-100 mb-2">{module.title}</h3>
+
+                    <div className="flex items-center justify-center mt-2 w-full">
+                      <motion.div
+                        animate={{ rotate: openModuleIndex === index ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="text-[#F4A261] dark:text-[#F4A261]"
+                      >
+                        <ChevronDown size={16} />
+                      </motion.div>
+                    </div>
+
+                    <AnimatePresence>
+                      {openModuleIndex === index && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0, marginTop: 0 }}
+                          animate={{ height: "auto", opacity: 1, marginTop: 8 }}
+                          exit={{ height: 0, opacity: 0, marginTop: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden w-full"
+                        >
+                          <p className="text-xs text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                            Automatizá la emisión de comprobantes ARCA en un mismo panel. Generá facturas A/B/C, notas de crédito y débito, remitos y comprobantes fiscales con CAE y QR instantáneos, validaciones según tipo de cliente y respaldo seguro por 10 años.
+                          </p>
+                          <ul className="space-y-2">
+                            <li className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
+                              <Check className="h-4 w-4 text-[#F4A261] dark:text-[#F4A261] flex-shrink-0 mt-0.5" />
+                              <span>CAE + QR al instante para todos los comprobantes homologados</span>
+                            </li>
+                            <li className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
+                              <Check className="h-4 w-4 text-[#F4A261] dark:text-[#F4A261] flex-shrink-0 mt-0.5" />
+                              <span>Dashboard con métricas en vivo y Libro IVA listo para AFIP</span>
+                            </li>
+                            <li className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
+                              <Check className="h-4 w-4 text-[#F4A261] dark:text-[#F4A261] flex-shrink-0 mt-0.5" />
+                              <span>Suscripciones automáticas, remitos electrónicos y soporte online/offline</span>
+                            </li>
+                          </ul>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ) : (
+                  <FeatureCard
+                    key={index}
+                    icon={module.icon}
+                    title={module.title}
+                    description={module.description}
+                    isOpen={openModuleIndex === index}
+                    onClick={() => toggleModule(index)}
+                  />
+                )
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA - Después de Módulos */}
+        <section className="py-8 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h3 className="text-2xl font-bold text-[#1D3557] dark:text-white mb-4">¿Viste algo que te interesó?</h3>
+            <Link href="#contacto" className="inline-block vantyx-btn-primary px-8 py-3 rounded-lg font-semibold">
+              Solicitar una demostración
+            </Link>
+          </div>
+        </section>
+
+        {/* Características principales */}
+        <section className="py-16 bg-[#F7F7F7] dark:bg-gray-800">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <SlideInLeft>
+                <div className="rounded-lg overflow-hidden shadow-lg">
+                  <Image
+                    src="/fc-electronica.jpeg"
+                    alt="Facturación Electrónica - Sistema de gestión de facturas en Vantyx"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto"
+                  />
+                </div>
+              </SlideInLeft>
+              <SlideInRight>
+                <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-6">Facturación Electrónica</h2>
+                <p className="text-gray-600 dark:text-gray-400 mb-6">
+                  Automatizá la emisión de comprobantes ARCA en un mismo panel. Generá facturas A/B/C, notas de crédito y débito, remitos y comprobantes fiscales con CAE y QR instantáneos, validaciones según tipo de cliente y respaldo seguro por 10 años.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "CAE + QR al instante para todos los comprobantes homologados",
+                    "Dashboard con métricas en vivo y Libro IVA listo para AFIP",
+                    "Suscripciones automáticas, remitos electrónicos y soporte online/offline",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start">
+                      <Check className="h-5 w-5 text-[#F4A261] dark:text-[#F4A261] mr-2 mt-0.5" />
+                      <span className="text-[#1D3557] dark:text-gray-300">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8">
+                  <Link
+                    href="#contacto"
+                    className="inline-flex items-center text-[#1D3557] dark:text-[#F4A261] font-medium hover:text-[#2A4A73] dark:hover:text-[#E08C4C]"
+                  >
+                    Conocer más <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </div>
+              </SlideInRight>
+            </div>
+          </div>
+        </section>
+
+        {/* Gestión de Clientes (CRM) */}
+        <section className="py-16 bg-white dark:bg-gray-900">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col items-center">
+              <SlideInLeft className="w-full max-w-4xl">
+                <div className="mb-8 flex justify-center">
+                  <Image
+                    src="/modulo-clientes.png"
+                    alt="Módulo de Gestión de Clientes CRM - Seguimiento de oportunidades de venta"
+                    width={800}
+                    height={500}
+                    className="rounded-lg shadow-md w-full"
+                  />
+                </div>
+                <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-6">
+                  Gestión de Clientes (CRM)
+                </h2>
+                <p className="text-gray-600 dark:text-gray-400 mb-6">
+                  Centraliza toda la información de tus clientes y potenciales. Realiza un seguimiento efectivo de tus
+                  oportunidades de venta y mejora la relación con tus clientes.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "Seguimiento de oportunidades",
+                    "Historial completo de interacciones",
+                    "Gestión de campañas de marketing",
+                    "Segmentación de clientes",
+                    "Reportes y análisis de ventas",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start">
+                      <Check className="h-5 w-5 text-[#F4A261] dark:text-[#F4A261] mr-2 mt-0.5" />
+                      <span className="text-[#1D3557] dark:text-gray-300">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8">
+                  <Link
+                    href="#contacto"
+                    className="inline-flex items-center text-[#1D3557] dark:text-[#F4A261] font-medium hover:text-[#2A4A73] dark:hover:text-[#E08C4C]"
+                  >
+                    Conocer más <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </div>
+              </SlideInLeft>
+            </div>
+          </div>
+        </section>
+
+        {/* Sectores */}
+        <section id="sectores" className="py-16 bg-[#F7F7F7] dark:bg-gray-800">
+          <div className="container mx-auto px-4 md:px-6">
+            <FadeIn className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">
+                Soluciones para todos los sectores
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Nuestro sistema se adapta a las necesidades específicas de diferentes industrias.
+              </p>
+            </FadeIn>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {sectores.map((sector, index) => (
+                <SectorCard
+                  key={index}
+                  title={sector.title}
+                  description={sector.description}
+                  detailedDescription={sector.detailedDescription}
+                  icon={sector.icon}
+                  isFlipped={flippedSectorIndex === index}
+                  onFlip={() => handleSectorFlip(index)}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA - Después de Sectores */}
+        <section className="py-8 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h3 className="text-2xl font-bold text-[#1D3557] dark:text-white mb-4">
+              ¿Es tu sector? Conoce cómo podemos ayudarte
+            </h3>
+            <Link href="#contacto" className="inline-block vantyx-btn-primary px-8 py-3 rounded-lg font-semibold">
+              Habla con un asesor
+            </Link>
+          </div>
+        </section>
+
+        {/* Web Dev Section - Restructured */}
+        <section
+          id="web-dev"
+          className="py-16 bg-white dark:bg-gray-900 relative"
+          style={{
+            backgroundImage: 'url("/web-development-workspace-with-laptop-and-digital-.jpg")',
+            backgroundAttachment: "fixed",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        >
+          <div className="absolute inset-0 bg-white/85 dark:bg-gray-900/90" />
+
+          <div className="container mx-auto px-4 md:px-6 relative z-10">
+            <FadeIn className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Desarrollo Web Profesional</h2>
+              <h3 className="text-xl text-[#1D3557] dark:text-gray-300 mb-4">
+                Impulsá tu negocio con una página web moderna y funcional
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-6">
+                En Vantyx creamos sitios web pensados para pymes, profesionales y emprendedores que buscan presencia
+                online real. Diseñamos y desarrollamos páginas web a medida con enfoque en resultados: velocidad,
+                posicionamiento, diseño atractivo y adaptado a todos los dispositivos.
+              </p>
+            </FadeIn>
+
+            {/* Tarjetas de servicios en grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {webServices.map((service, index) => (
+                <WebServiceCard
+                  key={index}
+                  title={service.title}
+                  description={service.description}
+                  detailedDescription={service.detailedDescription}
+                  icon={service.icon}
+                  isFlipped={flippedWebServiceIndex === index}
+                  onFlip={() => handleWebServiceFlip(index)}
+                />
+              ))}
+            </div>
+
+            <div className="mb-16">
+              <SpecialOfferCard
+                onClick={() => {
+                  const contactSection = document.getElementById("contacto")
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
+              />
+            </div>
+
+            {/* CTA final */}
+            <div className="text-center">
+              <FadeIn>
+                <button
+                  onClick={() => {
+                    const contactSection = document.getElementById("contacto")
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: "smooth" })
+                    }
+                  }}
+                  className="vantyx-btn-primary px-8 py-3 text-lg font-semibold"
+                >
+                  Quiero más información
+                </button>
+              </FadeIn>
+            </div>
+          </div>
+        </section>
+
+        {/* Vantyx Visual con Carrusel de Facebook */}
+        <section className="py-16 bg-white dark:bg-gray-900">
+          <div className="container mx-auto px-4 md:px-6">
+            <FadeIn className="text-center mb-12">
+              <div className="mb-6 flex justify-center">
+                <Image
+                  src="/vantyx-visual-logo.png"
+                  alt="Logo Vantyx Visual - Uniformes y bolsas personalizadas"
+                  width={200}
+                  height={120}
+                  className="h-auto"
+                />
+              </div>
+              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Vantyx Visual</h2>
+              <h3 className="text-xl text-[#1D3557] dark:text-gray-300 mb-6">Impulsá tu marca con identidad propia</h3>
+              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+                En Vantyx no solo te damos el sistema para gestionar tu negocio, también te ayudamos a mostrarlo al
+                mundo. Con Vantyx Visual accedés a uniformes personalizados con tu logo (estampados o bordados) y bolsas
+                de friselina diseñadas a medida para tu emprendimiento. Ideal para fortalecer tu imagen comercial desde
+                el primer día.
+              </p>
+              <AnimatedButton
+                className="vantyx-btn-primary px-6 py-3"
+                onClick={() => {
+                  const contactSection = document.getElementById("contacto")
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
+              >
+                Quiero mi identidad visual
+              </AnimatedButton>
+            </FadeIn>
+
+            <div className="mt-12 max-w-2xl mx-auto">
+              <FacebookCarousel />
+            </div>
+          </div>
+        </section>
+
+        {/* Tabla Comparativa de Precios */}
+        <section id="precios" className="py-20 bg-[#F7F7F7] dark:bg-gray-800 min-h-screen flex flex-col justify-center">
+          <div className="container mx-auto px-4 md:px-6">
+            <FadeIn className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Compará nuestros planes</h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Elegí el plan que mejor se adapte a las necesidades de tu empresa. Todos incluyen soporte y
+                actualizaciones.
+              </p>
+            </FadeIn>
+
+            <div className="pb-12">
+              <PricingComparisonTable />
+            </div>
+          </div>
+        </section>
+
+        {/* CTA - Después de Precios */}
+        <section className="py-8 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h3 className="text-2xl font-bold text-[#1D3557] dark:text-white mb-4">
+              Elige el plan perfecto para tu negocio
+            </h3>
+            <Link href="#contacto" className="inline-block vantyx-btn-primary px-8 py-3 rounded-lg font-semibold">
+              Solicitar ahora
+            </Link>
+          </div>
+        </section>
+
+        {/* Testimonios Section Renovada */}
+        <section id="testimonios" className="py-16 bg-white dark:bg-gray-900">
+          <div className="container mx-auto px-4 md:px-6">
+            <FadeIn className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">
+                Lo que dicen nuestros clientes
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Empresas líderes en diferentes industrias han transformado sus operaciones con Vantyx
+              </p>
+            </FadeIn>
+            <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <StaggerItem>
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 h-full flex flex-col"
+                >
+                  <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+                    <Image src="/maria-elena-rodriguez.png" alt="María Elena Rodríguez" fill className="object-cover" />
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1 italic">
+                    "Vantyx revolucionó nuestra gestión. En solo 3 meses aumentamos nuestra eficiencia operativa en un
+                    40% y redujimos los errores administrativos a cero."
+                  </p>
+                  <div className="text-center pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <h4 className="font-bold text-[#1D3557] dark:text-white">María Elena Rodríguez</h4>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">Directora General - InnovateCorp</span>
+                  </div>
+                </motion.div>
+              </StaggerItem>
+              <StaggerItem>
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 h-full flex flex-col"
+                >
+                  <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+                    <Image src="/carlos-mendoza.png" alt="Carlos Mendoza" fill className="object-cover" />
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1 italic">
+                    "La integración de todos nuestros procesos en una sola plataforma fue un cambio total. Ahora tenemos
+                    control total sobre inventario, facturación y clientes."
+                  </p>
+                  <div className="text-center pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <h4 className="font-bold text-[#1D3557] dark:text-white">Carlos Mendoza</h4>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">CEO - TechSolutions Argentina</span>
+                  </div>
+                </motion.div>
+              </StaggerItem>
+              <StaggerItem>
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300 h-full flex flex-col"
+                >
+                  <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+                    <Image src="/ana-lucia-fernandez.png" alt="Ana Lucía Fernández" fill className="object-cover" />
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1 italic">
+                    "Como emprendedora, Vantyx me permitió profesionalizar mi negocio desde el día uno. El soporte
+                    personalizado hizo toda la diferencia en nuestro crecimiento."
+                  </p>
+                  <div className="text-center pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <h4 className="font-bold text-[#1D3557] dark:text-white">Ana Lucía Fernández</h4>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">Fundadora - EcoEmprendimientos</span>
+                  </div>
+                </motion.div>
+              </StaggerItem>
+            </Stagger>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-16 bg-[#F7F7F7] dark:bg-gray-800">
+          <div className="container mx-auto px-4 md:px-6">
+            <FadeIn className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Preguntas Frecuentes</h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Resolvemos tus dudas sobre Vantyx para que puedas tomar la mejor decisión para tu negocio.
+              </p>
+            </FadeIn>
+            <FaqAccordion items={faqItems} />
+          </div>
+        </section>
+
+        {/* Contacto Section */}
+        <section id="contacto" className="py-16 bg-white dark:bg-gray-900">
+          <div className="container mx-auto px-4 md:px-6">
+            <FadeIn className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Contáctanos</h2>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Estamos listos para ayudarte a optimizar tus procesos y aumentar tu rentabilidad.
+              </p>
+            </FadeIn>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <SlideInLeft>
+                <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold text-[#1D3557] dark:text-[#F4A261] mb-4">
+                    Información de contacto
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start">
+                      <Phone className="h-5 w-5 text-[#1D3557] dark:text-[#F4A261] mt-1 mr-3" />
+                      <div>
+                        <h4 className="font-medium text-[#1D3557] dark:text-gray-200">Teléfono</h4>
+                        <p className="text-gray-600 dark:text-gray-400">+54 379 4601984</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start">
+                      <Mail className="h-5 w-5 text-[#1D3557] dark:text-[#F4A261] mt-1 mr-3" />
+                      <div>
+                        <h4 className="font-medium text-[#1D3557] dark:text-gray-200">Email</h4>
+                        <p className="text-gray-600 dark:text-gray-400">vantyx.ar@gmail.com</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-8">
+                    <h4 className="font-medium text-[#1D3557] dark:text-gray-200 mb-3">Horario de atención</h4>
+                    <p className="text-gray-600 dark:text-gray-400">Lunes a Viernes: 9:00 - 18:00</p>
+                    <p className="text-gray-600 dark:text-gray-400">Sábados: 9:00 - 13:00</p>
+                  </div>
+
+                  <div className="mt-8">
+                    <h4 className="font-medium text-[#1D3557] dark:text-gray-200 mb-3">Síguenos en redes sociales</h4>
+                    <div className="flex space-x-4">
+                      <AnimatedIcon>
+                        <a
+                          href="https://www.facebook.com/vantyx.ar"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#1D3557] dark:text-[#F4A261] hover:text-[#2A4A73] dark:hover:text-[#E08C4C]"
+                          aria-label="Síguenos en Facebook"
+                        >
+                          <Facebook className="h-6 w-6" />
+                        </a>
+                      </AnimatedIcon>
+                      <AnimatedIcon>
+                        <a
+                          href="https://www.instagram.com/vantyx.arg/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#1D3557] dark:text-[#F4A261] hover:text-[#2A4A73] dark:hover:text-[#E08C4C]"
+                          aria-label="Síguenos en Instagram"
+                        >
+                          <Instagram className="h-6 w-6" />
+                        </a>
+                      </AnimatedIcon>
+                      <AnimatedIcon>
+                        <a
+                          href="https://www.tiktok.com/@vantyx.net"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#1D3557] dark:text-[#F4A261] hover:text-[#2A4A73] dark:hover:text-[#E08C4C]"
+                          aria-label="Síguenos en TikTok"
+                        >
+                          <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                          </svg>
+                        </a>
+                      </AnimatedIcon>
+                    </div>
+                  </div>
+                </div>
+              </SlideInLeft>
+
+              <SlideInRight>
+                <GoogleForm />
+              </SlideInRight>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 vantyx-gradient">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <Scale>
+              <h2 className="text-3xl font-bold mb-6">¿Listo para potenciar tu empresa?</h2>
+              <p className="max-w-2xl mx-auto mb-8 text-gray-100">
+                Solicita una demostración gratuita y descubre cómo Vantyx puede ayudarte a optimizar tus procesos y
+                aumentar tu rentabilidad.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <AnimatedButton
+                  className="bg-[#F4A261] text-gray-800 hover:bg-[#E08C4C] px-8 py-3 text-lg"
+                  onClick={() => {
+                    const contactSection = document.getElementById("contacto")
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: "smooth" })
+                    }
+                  }}
+                >
+                  Comienza ahora
+                </AnimatedButton>
+                <AnimatedButton
+                  variant="outline"
+                  className="bg-transparent text-white border-white hover:bg-white/10 px-8 py-3 text-lg"
+                  onClick={() => window.open("https://wa.me/543794601984", "_blank")}
+                >
+                  Contactar a un Asesor
+                </AnimatedButton>
+              </div>
+            </Scale>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-[#1D3557] text-gray-300 py-12">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="col-span-1 md:col-span-2">
+              <SlideUp>
+                <div className="flex justify-center md:justify-start mb-6">
+                  <Logo width={200} height={80} variant="default" />
+                </div>
+                <p className="mb-4 max-w-md text-center md:text-left">
+                  Desarrollamos sistemas de gestión ERP/CRM para pymes, con foco en el sector agropecuario, comercial y
+                  servicios.
+                </p>
+                <p className="text-sm text-center md:text-left">Desarrollado en Corrientes, con visión nacional.</p>
+              </SlideUp>
+            </div>
+            <div>
+              <SlideUp delay={0.2}>
+                <h3 className="text-white font-semibold mb-4">Enlaces rápidos</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <Link href="#modulos" className="hover:text-[#F4A261] transition-colors">
+                      Módulos
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#web-dev" className="hover:text-[#F4A261] transition-colors">
+                      Desarrollo Web
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#sectores" className="hover:text-[#F4A261] transition-colors">
+                      Sectores
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#precios" className="hover:text-[#F4A261] transition-colors">
+                      Precios
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#testimonios" className="hover:text-[#F4A261] transition-colors">
+                      Testimonios
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#faq" className="hover:text-[#F4A261] transition-colors">
+                      FAQ
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#contacto" className="hover:text-[#F4A261] transition-colors">
+                      Contacto
+                    </Link>
+                  </li>
+                </ul>
+              </SlideUp>
+            </div>
+            <div>
+              <SlideUp delay={0.4}>
+                <h3 className="text-white font-semibold mb-4">Contacto</h3>
+                <ul className="space-y-2">
+                  <li className="flex items-center">
+                    <Phone className="h-4 w-4 mr-2" />
+                    <span>+54 379 4601984</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Mail className="h-4 w-4 mr-2" />
+                    <span>vantyx.ar@gmail.com</span>
+                  </li>
+                </ul>
+                <div className="mt-4 flex space-x-4">
+                  <a
+                    href="https://www.facebook.com/vantyx.ar"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-[#F4A261] transition-colors"
+                    aria-label="Síguenos en Facebook"
+                  >
+                    <Facebook className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/vantyx.arg/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-[#F4A261] transition-colors"
+                    aria-label="Síguenos en Instagram"
+                  >
+                    <Instagram className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@vantyx.net"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-[#F4A261] transition-colors"
+                    aria-label="Síguenos en TikTok"
+                  >
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                    </svg>
+                  </a>
+                </div>
+              </SlideUp>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
+            <p>© {new Date().getFullYear()} Vantyx. Todos los derechos reservados.</p>
+            <div className="mt-4 flex flex-wrap justify-center gap-4">
+              <a href="#" className="hover:text-[#F4A261] transition-colors">
+                Política de Privacidad
+              </a>
+              <span className="text-gray-700">|</span>
+              <a href="#" className="hover:text-[#F4A261] transition-colors">
+                Términos de Uso
+              </a>
+              <span className="text-gray-700">|</span>
+              <a href="#" className="hover:text-[#F4A261] transition-colors">
+                Cookies
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Botón flotante de WhatsApp */}
+      <WhatsAppButton />
+
+      {/* Chatbot de Vantyx */}
+      <VantyxChatbot />
+    </div>
+  )
+}
