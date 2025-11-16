@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Star, Shield } from "lucide-react"
+import { Star, Shield, Zap } from 'lucide-react'
 import { AnimatedButton } from "@/components/animations/animated-button"
 import Image from "next/image"
 
@@ -59,48 +59,70 @@ export function EnhancedHeroSection() {
                   className="flex items-center space-x-2 bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-md border border-gray-100 dark:border-gray-700"
                 >
                   <span className="text-cyan-600 dark:text-cyan-400">{badge.icon}</span>
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{badge.text}</span>
+                  <span className="text-sm font-medium text-[#424242] dark:text-gray-300">{badge.text}</span>
                 </motion.div>
               ))}
             </div>
 
             {/* Headline */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="text-gray-900 dark:text-white">La plataforma</span>
+              <span className="text-[#212121] dark:text-white">La plataforma</span>
               <br />
               <span className="vantyx-gradient-text">todo-en-uno</span>
               <br />
-              <span className="text-gray-900 dark:text-white">para tu PyME</span>
+              <span className="text-[#212121] dark:text-white">para tu PyME</span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-4 max-w-2xl">
-              Gestiona contabilidad, inventario, facturación y CRM desde una única plataforma intuitiva. Diseñada
-              específicamente para empresas argentinas.
+            <p className="text-xl text-[#424242] dark:text-gray-400 mb-4 max-w-2xl">
+              Tu PyME, tu información y tus ventas en un solo lugar. Gestiona contabilidad, inventario, facturación y CRM sin complicaciones. 100% adaptado a Argentina.
             </p>
 
-            {/* Prominent Subtitle with Differential */}
             <div className="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/30 dark:to-blue-900/30 rounded-lg p-4 mb-8 border border-cyan-200 dark:border-cyan-800">
-              <p className="text-lg font-semibold text-[#1D3557] dark:text-[#F4A261] text-center">
-                🎯 Automatiza tu gestión con un solo sistema y soporte local en Argentina
+              <p className="text-lg font-semibold text-[#1D3557] dark:text-[#F4A261] text-center flex items-center justify-center gap-2">
+                <Zap className="h-5 w-5" />
+                Automatizá tu gestión, aumentá tu facturación y decile adiós a los errores administrativos
               </p>
             </div>
 
-            {/* CTA - Solo Ver Módulos */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <AnimatedButton
-                size="lg"
-                variant="outline"
-                className="px-8 py-6 text-lg rounded-xl border-2 border-cyan-600 text-cyan-600 hover:bg-cyan-50 dark:hover:bg-cyan-950 transition-all duration-300 bg-transparent"
-                onClick={() => {
-                  const modulesSection = document.getElementById("modulos")
-                  if (modulesSection) {
-                    modulesSection.scrollIntoView({ behavior: "smooth" })
-                  }
-                }}
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex-1"
               >
-                Ver Módulos
-              </AnimatedButton>
+                <AnimatedButton
+                  size="lg"
+                  className="w-full px-8 py-6 text-lg rounded-xl bg-[#1D3557] text-white hover:bg-[#16273d] transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
+                  onClick={() => {
+                    const contactSection = document.getElementById("contacto")
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: "smooth" })
+                    }
+                  }}
+                >
+                  Quiero simplificar mi gestión
+                </AnimatedButton>
+              </motion.div>
+              
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex-1"
+              >
+                <AnimatedButton
+                  size="lg"
+                  variant="outline"
+                  className="w-full px-8 py-6 text-lg rounded-xl border-2 border-[#F4A261] text-[#F4A261] hover:bg-[#F4A261] hover:text-white transition-all duration-300 dark:hover:bg-[#F4A261] dark:hover:text-gray-900 font-semibold"
+                  onClick={() => {
+                    const modulesSection = document.getElementById("modulos")
+                    if (modulesSection) {
+                      modulesSection.scrollIntoView({ behavior: "smooth" })
+                    }
+                  }}
+                >
+                  Explorar características
+                </AnimatedButton>
+              </motion.div>
             </div>
 
             {/* Social Proof */}
@@ -118,9 +140,9 @@ export function EnhancedHeroSection() {
                   {[1, 2, 3, 4, 5].map((i) => (
                     <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   ))}
-                  <span className="text-sm text-gray-600 dark:text-gray-400 ml-2">4.9/5</span>
+                  <span className="text-sm text-[#424242] dark:text-gray-400 ml-2 font-medium">4.9/5</span>
                 </div>
-                <p className="text-sm font-semibold text-gray-900 dark:text-white">Confianza de nuestros clientes</p>
+                <p className="text-sm font-semibold text-[#212121] dark:text-white">Confianza de nuestros clientes</p>
               </div>
             </div>
           </motion.div>
@@ -157,8 +179,8 @@ export function EnhancedHeroSection() {
                   <Shield className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">100%</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Seguro</p>
+                  <p className="text-2xl font-bold text-[#212121] dark:text-white">100%</p>
+                  <p className="text-sm text-[#424242] dark:text-gray-400">Seguro</p>
                 </div>
               </div>
             </motion.div>
@@ -174,8 +196,8 @@ export function EnhancedHeroSection() {
                   <Star className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">4.9/5</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Satisfacción</p>
+                  <p className="text-2xl font-bold text-[#212121] dark:text-white">4.9/5</p>
+                  <p className="text-sm text-[#424242] dark:text-gray-400">Satisfacción</p>
                 </div>
               </div>
             </motion.div>

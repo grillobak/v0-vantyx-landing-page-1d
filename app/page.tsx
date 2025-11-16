@@ -32,6 +32,10 @@ import { FacebookCarousel } from "@/components/facebook-carousel"
 import { VantyxChatbot } from "@/components/vantyx-chatbot"
 import { SpecialOfferCard } from "@/components/special-offer-card"
 import { WebServiceCard } from "@/components/web-service-card" // Importado WebServiceCard
+import { PricingPlans } from "@/components/pricing-plans"
+import { TrustSection } from "@/components/trust-section"
+import { LiveChatWidget } from "@/components/live-chat-widget"
+
 
 export default function Home() {
   // Módulos con sus descripciones
@@ -700,10 +704,10 @@ export default function Home() {
               Sectores
             </Link>
             <Link
-              href="#precios"
+              href="#planes"
               className="text-[#1D3557] dark:text-gray-300 hover:text-[#F4A261] dark:hover:text-[#F4A261] transition-colors"
             >
-              Precios
+              Planes
             </Link>
             <Link
               href="#contacto"
@@ -1100,6 +1104,10 @@ export default function Home() {
           </div>
         </section>
 
+        <PricingPlans />
+
+        <TrustSection />
+
         {/* CTA - Después de Precios */}
         <section className="py-8 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30">
           <div className="container mx-auto px-4 md:px-6 text-center">
@@ -1323,7 +1331,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#1D3557] text-gray-300 py-12">
+      <footer className="bg-[#1D3557] text-white py-12">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
@@ -1454,6 +1462,8 @@ export default function Home() {
 
       {/* Chatbot de Vantyx */}
       <VantyxChatbot />
+
+      <LiveChatWidget />
     </div>
   )
 }

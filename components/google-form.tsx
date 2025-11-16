@@ -5,17 +5,17 @@ import { useState, useEffect } from "react"
 export function GoogleForm() {
   const [iframeHeight, setIframeHeight] = useState(800)
 
-  // Ajustar la altura del iframe en dispositivos móviles
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setIframeHeight(600)
+      if (window.innerWidth < 640) {
+        setIframeHeight(900) // Larger height for small screens
+      } else if (window.innerWidth < 768) {
+        setIframeHeight(700)
       } else {
         setIframeHeight(800)
       }
     }
 
-    // Ejecutar al montar y cuando cambie el tamaño de la ventana
     handleResize()
     window.addEventListener("resize", handleResize)
 
@@ -25,10 +25,12 @@ export function GoogleForm() {
   }, [])
 
   return (
-    <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md w-full">
-      <h3 className="text-xl font-semibold text-[#1D3557] dark:text-[#F4A261] mb-4">Contáctanos</h3>
-      <p className="text-gray-600 dark:text-gray-400 mb-6">
-        Complete el formulario y un asesor se pondrá en contacto con usted a la brevedad.
+    <div className="bg-white dark:bg-gray-900 p-4 sm:p-6 rounded-lg shadow-md w-full">
+      <h3 className="text-lg sm:text-xl font-semibold text-[#1D3557] dark:text-[#F4A261] mb-3 sm:mb-4">
+        Contáctanos
+      </h3>
+      <p className="text-sm sm:text-base text-[#424242] dark:text-gray-400 mb-4 sm:mb-6">
+        Complete el formulario y un asesor se pondrá en contacto a la brevedad
       </p>
       <div className="w-full overflow-hidden rounded-lg">
         <iframe
