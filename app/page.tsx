@@ -752,10 +752,10 @@ export default function Home() {
         <section id="modulos" className="py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4 md:px-6">
             <FadeIn className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">
+              <h2 className="text-3xl font-bold text-[#212121] dark:text-[#F4A261] mb-4">
                 Todos los Módulos que necesitas
               </h2>
-              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              <p className="text-[#424242] dark:text-gray-400 max-w-2xl mx-auto">
                 Nuestro sistema de gestión está diseñado para adaptarse a las necesidades específicas de las PyMEs
                 argentinas.
               </p>
@@ -771,7 +771,7 @@ export default function Home() {
                     onClick={() => toggleModule(index)}
                   >
                     <div className="text-[#1D3557] dark:text-[#F4A261] mb-3">{module.icon}</div>
-                    <h3 className="text-sm font-medium text-[#1D3557] dark:text-gray-100 mb-2">{module.title}</h3>
+                    <h3 className="text-sm font-medium text-[#212121] dark:text-gray-100 mb-2">{module.title}</h3>
 
                     <div className="flex items-center justify-center mt-2 w-full">
                       <motion.div
@@ -792,19 +792,19 @@ export default function Home() {
                           transition={{ duration: 0.3 }}
                           className="overflow-hidden w-full"
                         >
-                          <p className="text-xs text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                          <p className="text-xs text-[#424242] dark:text-gray-400 mb-4 leading-relaxed">
                             Automatizá la emisión de comprobantes ARCA en un mismo panel. Generá facturas A/B/C, notas de crédito y débito, remitos y comprobantes fiscales con CAE y QR instantáneos, validaciones según tipo de cliente y respaldo seguro por 10 años.
                           </p>
                           <ul className="space-y-2">
-                            <li className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
+                            <li className="flex items-start gap-2 text-xs text-[#424242] dark:text-gray-400">
                               <Check className="h-4 w-4 text-[#F4A261] dark:text-[#F4A261] flex-shrink-0 mt-0.5" />
                               <span>CAE + QR al instante para todos los comprobantes homologados</span>
                             </li>
-                            <li className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
+                            <li className="flex items-start gap-2 text-xs text-[#424242] dark:text-gray-400">
                               <Check className="h-4 w-4 text-[#F4A261] dark:text-[#F4A261] flex-shrink-0 mt-0.5" />
                               <span>Dashboard con métricas en vivo y Libro IVA listo para AFIP</span>
                             </li>
-                            <li className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
+                            <li className="flex items-start gap-2 text-xs text-[#424242] dark:text-gray-400">
                               <Check className="h-4 w-4 text-[#F4A261] dark:text-[#F4A261] flex-shrink-0 mt-0.5" />
                               <span>Suscripciones automáticas, remitos electrónicos y soporte online/offline</span>
                             </li>
@@ -831,7 +831,7 @@ export default function Home() {
         {/* CTA - Después de Módulos */}
         <section className="py-8 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30">
           <div className="container mx-auto px-4 md:px-6 text-center">
-            <h3 className="text-2xl font-bold text-[#1D3557] dark:text-white mb-4">¿Viste algo que te interesó?</h3>
+            <h3 className="text-2xl font-bold text-[#212121] dark:text-white mb-4">¿Viste algo que te interesó?</h3>
             <Link href="#contacto" className="inline-block vantyx-btn-primary px-8 py-3 rounded-lg font-semibold">
               Solicitar una demostración
             </Link>
@@ -854,8 +854,8 @@ export default function Home() {
                 </div>
               </SlideInLeft>
               <SlideInRight>
-                <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-6">Facturación Electrónica</h2>
-                <p className="text-gray-600 dark:text-gray-400 mb-6">
+                <h2 className="text-3xl font-bold text-[#212121] dark:text-[#F4A261] mb-6">Facturación Electrónica</h2>
+                <p className="text-[#424242] dark:text-gray-400 mb-6">
                   Automatizá la emisión de comprobantes ARCA en un mismo panel. Generá facturas A/B/C, notas de crédito y débito, remitos y comprobantes fiscales con CAE y QR instantáneos, validaciones según tipo de cliente y respaldo seguro por 10 años.
                 </p>
                 <ul className="space-y-3">
@@ -866,7 +866,7 @@ export default function Home() {
                   ].map((item, index) => (
                     <li key={index} className="flex items-start">
                       <Check className="h-5 w-5 text-[#F4A261] dark:text-[#F4A261] mr-2 mt-0.5" />
-                      <span className="text-[#1D3557] dark:text-gray-300">{item}</span>
+                      <span className="text-[#212121] dark:text-gray-300">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -897,10 +897,10 @@ export default function Home() {
                     className="rounded-lg shadow-md w-full"
                   />
                 </div>
-                <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-6">
+                <h2 className="text-3xl font-bold text-[#212121] dark:text-[#F4A261] mb-6">
                   Gestión de Clientes (CRM)
                 </h2>
-                <p className="text-gray-600 dark:text-gray-400 mb-6">
+                <p className="text-[#424242] dark:text-gray-400 mb-6">
                   Centraliza toda la información de tus clientes y potenciales. Realiza un seguimiento efectivo de tus
                   oportunidades de venta y mejora la relación con tus clientes.
                 </p>
@@ -914,7 +914,7 @@ export default function Home() {
                   ].map((item, index) => (
                     <li key={index} className="flex items-start">
                       <Check className="h-5 w-5 text-[#F4A261] dark:text-[#F4A261] mr-2 mt-0.5" />
-                      <span className="text-[#1D3557] dark:text-gray-300">{item}</span>
+                      <span className="text-[#212121] dark:text-gray-300">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -935,10 +935,10 @@ export default function Home() {
         <section id="sectores" className="py-16 bg-[#F7F7F7] dark:bg-gray-800">
           <div className="container mx-auto px-4 md:px-6">
             <FadeIn className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">
+              <h2 className="text-3xl font-bold text-[#212121] dark:text-[#F4A261] mb-4">
                 Soluciones para todos los sectores
               </h2>
-              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              <p className="text-[#424242] dark:text-gray-400 max-w-2xl mx-auto">
                 Nuestro sistema se adapta a las necesidades específicas de diferentes industrias.
               </p>
             </FadeIn>
@@ -962,7 +962,7 @@ export default function Home() {
         {/* CTA - Después de Sectores */}
         <section className="py-8 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30">
           <div className="container mx-auto px-4 md:px-6 text-center">
-            <h3 className="text-2xl font-bold text-[#1D3557] dark:text-white mb-4">
+            <h3 className="text-2xl font-bold text-[#212121] dark:text-white mb-4">
               ¿Es tu sector? Conoce cómo podemos ayudarte
             </h3>
             <Link href="#contacto" className="inline-block vantyx-btn-primary px-8 py-3 rounded-lg font-semibold">
@@ -987,11 +987,11 @@ export default function Home() {
 
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <FadeIn className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Desarrollo Web Profesional</h2>
-              <h3 className="text-xl text-[#1D3557] dark:text-gray-300 mb-4">
+              <h2 className="text-3xl font-bold text-[#212121] dark:text-[#F4A261] mb-4">Desarrollo Web Profesional</h2>
+              <h3 className="text-xl text-[#212121] dark:text-gray-300 mb-4">
                 Impulsá tu negocio con una página web moderna y funcional
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-6">
+              <p className="text-[#424242] dark:text-gray-400 max-w-3xl mx-auto mb-6">
                 En Vantyx creamos sitios web pensados para pymes, profesionales y emprendedores que buscan presencia
                 online real. Diseñamos y desarrollamos páginas web a medida con enfoque en resultados: velocidad,
                 posicionamiento, diseño atractivo y adaptado a todos los dispositivos.
@@ -1056,9 +1056,9 @@ export default function Home() {
                   className="h-auto"
                 />
               </div>
-              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Vantyx Visual</h2>
-              <h3 className="text-xl text-[#1D3557] dark:text-gray-300 mb-6">Impulsá tu marca con identidad propia</h3>
-              <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+              <h2 className="text-3xl font-bold text-[#212121] dark:text-[#F4A261] mb-4">Vantyx Visual</h2>
+              <h3 className="text-xl text-[#212121] dark:text-gray-300 mb-6">Impulsá tu marca con identidad propia</h3>
+              <p className="text-[#424242] dark:text-gray-400 max-w-3xl mx-auto mb-8">
                 En Vantyx no solo te damos el sistema para gestionar tu negocio, también te ayudamos a mostrarlo al
                 mundo. Con Vantyx Visual accedés a uniformes personalizados con tu logo (estampados o bordados) y bolsas
                 de friselina diseñadas a medida para tu emprendimiento. Ideal para fortalecer tu imagen comercial desde
@@ -1087,8 +1087,8 @@ export default function Home() {
         <section id="precios" className="py-20 bg-[#F7F7F7] dark:bg-gray-800 min-h-screen flex flex-col justify-center">
           <div className="container mx-auto px-4 md:px-6">
             <FadeIn className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Compará nuestros planes</h2>
-              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              <h2 className="text-3xl font-bold text-[#212121] dark:text-[#F4A261] mb-4">Compará nuestros planes</h2>
+              <p className="text-[#424242] dark:text-gray-400 max-w-2xl mx-auto">
                 Elegí el plan que mejor se adapte a las necesidades de tu empresa. Todos incluyen soporte y
                 actualizaciones.
               </p>
@@ -1103,7 +1103,7 @@ export default function Home() {
         {/* CTA - Después de Precios */}
         <section className="py-8 bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/30 dark:to-blue-900/30">
           <div className="container mx-auto px-4 md:px-6 text-center">
-            <h3 className="text-2xl font-bold text-[#1D3557] dark:text-white mb-4">
+            <h3 className="text-2xl font-bold text-[#212121] dark:text-white mb-4">
               Elige el plan perfecto para tu negocio
             </h3>
             <Link href="#contacto" className="inline-block vantyx-btn-primary px-8 py-3 rounded-lg font-semibold">
@@ -1116,10 +1116,10 @@ export default function Home() {
         <section id="testimonios" className="py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4 md:px-6">
             <FadeIn className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">
+              <h2 className="text-3xl font-bold text-[#212121] dark:text-[#F4A261] mb-4">
                 Lo que dicen nuestros clientes
               </h2>
-              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              <p className="text-[#424242] dark:text-gray-400 max-w-2xl mx-auto">
                 Empresas líderes en diferentes industrias han transformado sus operaciones con Vantyx
               </p>
             </FadeIn>
@@ -1132,13 +1132,13 @@ export default function Home() {
                   <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
                     <Image src="/maria-elena-rodriguez.png" alt="María Elena Rodríguez" fill className="object-cover" />
                   </div>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1 italic">
+                  <p className="text-[#424242] dark:text-gray-400 mb-6 flex-1 italic">
                     "Vantyx revolucionó nuestra gestión. En solo 3 meses aumentamos nuestra eficiencia operativa en un
                     40% y redujimos los errores administrativos a cero."
                   </p>
                   <div className="text-center pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <h4 className="font-bold text-[#1D3557] dark:text-white">María Elena Rodríguez</h4>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">Directora General - InnovateCorp</span>
+                    <h4 className="font-bold text-[#212121] dark:text-white">María Elena Rodríguez</h4>
+                    <span className="text-sm text-[#666666] dark:text-gray-400">Directora General - InnovateCorp</span>
                   </div>
                 </motion.div>
               </StaggerItem>
@@ -1150,13 +1150,13 @@ export default function Home() {
                   <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
                     <Image src="/carlos-mendoza.png" alt="Carlos Mendoza" fill className="object-cover" />
                   </div>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1 italic">
+                  <p className="text-[#424242] dark:text-gray-400 mb-6 flex-1 italic">
                     "La integración de todos nuestros procesos en una sola plataforma fue un cambio total. Ahora tenemos
                     control total sobre inventario, facturación y clientes."
                   </p>
                   <div className="text-center pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <h4 className="font-bold text-[#1D3557] dark:text-white">Carlos Mendoza</h4>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">CEO - TechSolutions Argentina</span>
+                    <h4 className="font-bold text-[#212121] dark:text-white">Carlos Mendoza</h4>
+                    <span className="text-sm text-[#666666] dark:text-gray-400">CEO - TechSolutions Argentina</span>
                   </div>
                 </motion.div>
               </StaggerItem>
@@ -1168,13 +1168,13 @@ export default function Home() {
                   <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
                     <Image src="/ana-lucia-fernandez.png" alt="Ana Lucía Fernández" fill className="object-cover" />
                   </div>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1 italic">
+                  <p className="text-[#424242] dark:text-gray-400 mb-6 flex-1 italic">
                     "Como emprendedora, Vantyx me permitió profesionalizar mi negocio desde el día uno. El soporte
                     personalizado hizo toda la diferencia en nuestro crecimiento."
                   </p>
                   <div className="text-center pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <h4 className="font-bold text-[#1D3557] dark:text-white">Ana Lucía Fernández</h4>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">Fundadora - EcoEmprendimientos</span>
+                    <h4 className="font-bold text-[#212121] dark:text-white">Ana Lucía Fernández</h4>
+                    <span className="text-sm text-[#666666] dark:text-gray-400">Fundadora - EcoEmprendimientos</span>
                   </div>
                 </motion.div>
               </StaggerItem>
@@ -1186,8 +1186,8 @@ export default function Home() {
         <section id="faq" className="py-16 bg-[#F7F7F7] dark:bg-gray-800">
           <div className="container mx-auto px-4 md:px-6">
             <FadeIn className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Preguntas Frecuentes</h2>
-              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              <h2 className="text-3xl font-bold text-[#212121] dark:text-[#F4A261] mb-4">Preguntas Frecuentes</h2>
+              <p className="text-[#424242] dark:text-gray-400 max-w-2xl mx-auto">
                 Resolvemos tus dudas sobre Vantyx para que puedas tomar la mejor decisión para tu negocio.
               </p>
             </FadeIn>
@@ -1199,8 +1199,8 @@ export default function Home() {
         <section id="contacto" className="py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4 md:px-6">
             <FadeIn className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-[#1D3557] dark:text-[#F4A261] mb-4">Contáctanos</h2>
-              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              <h2 className="text-3xl font-bold text-[#212121] dark:text-[#F4A261] mb-4">Contáctanos</h2>
+              <p className="text-[#424242] dark:text-gray-400 max-w-2xl mx-auto">
                 Estamos listos para ayudarte a optimizar tus procesos y aumentar tu rentabilidad.
               </p>
             </FadeIn>
@@ -1208,35 +1208,37 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <SlideInLeft>
                 <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold text-[#1D3557] dark:text-[#F4A261] mb-4">
+                  <h3 className="text-xl font-semibold text-[#212121] dark:text-[#F4A261] mb-4">
                     Información de contacto
                   </h3>
                   <div className="space-y-4">
                     <div className="flex items-start">
                       <Phone className="h-5 w-5 text-[#1D3557] dark:text-[#F4A261] mt-1 mr-3" />
                       <div>
-                        <h4 className="font-medium text-[#1D3557] dark:text-gray-200">Teléfono</h4>
-                        <p className="text-gray-600 dark:text-gray-400">+54 379 4601984</p>
+                        <h4 className="font-medium text-[#212121] dark:text-gray-200">Teléfono</h4>
+                        <p className="text-[#424242] dark:text-gray-400">+54 379 4601984</p>
                       </div>
                     </div>
 
                     <div className="flex items-start">
                       <Mail className="h-5 w-5 text-[#1D3557] dark:text-[#F4A261] mt-1 mr-3" />
                       <div>
-                        <h4 className="font-medium text-[#1D3557] dark:text-gray-200">Email</h4>
-                        <p className="text-gray-600 dark:text-gray-400">vantyx.ar@gmail.com</p>
+                        <h4 className="font-medium text-[#212121] dark:text-gray-200">Email</h4>
+                        <p className="text-[#424242] dark:text-gray-400">vantyx.ar@gmail.com</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="mt-8">
-                    <h4 className="font-medium text-[#1D3557] dark:text-gray-200 mb-3">Horario de atención</h4>
-                    <p className="text-gray-600 dark:text-gray-400">Lunes a Viernes: 9:00 - 18:00</p>
-                    <p className="text-gray-600 dark:text-gray-400">Sábados: 9:00 - 13:00</p>
+                    {{/* Darker heading text */}}
+                    <h4 className="font-medium text-[#212121] dark:text-gray-200 mb-3">Horario de atención</h4>
+                    <p className="text-[#424242] dark:text-gray-400">Lunes a Viernes: 9:00 - 18:00</p>
+                    <p className="text-[#424242] dark:text-gray-400">Sábados: 9:00 - 13:00</p>
                   </div>
 
                   <div className="mt-8">
-                    <h4 className="font-medium text-[#1D3557] dark:text-gray-200 mb-3">Síguenos en redes sociales</h4>
+                    {{/* Darker heading text */}}
+                    <h4 className="font-medium text-[#212121] dark:text-gray-200 mb-3">Síguenos en redes sociales</h4>
                     <div className="flex space-x-4">
                       <AnimatedIcon>
                         <a
@@ -1289,7 +1291,8 @@ export default function Home() {
         <section className="py-16 vantyx-gradient">
           <div className="container mx-auto px-4 md:px-6 text-center">
             <Scale>
-              <h2 className="text-3xl font-bold mb-6">¿Listo para potenciar tu empresa?</h2>
+              {{/* Improved text color for better contrast on gradient */}}
+              <h2 className="text-3xl font-bold mb-6 text-white">¿Listo para potenciar tu empresa?</h2>
               <p className="max-w-2xl mx-auto mb-8 text-gray-100">
                 Solicita una demostración gratuita y descubre cómo Vantyx puede ayudarte a optimizar tus procesos y
                 aumentar tu rentabilidad.
@@ -1328,49 +1331,51 @@ export default function Home() {
                 <div className="flex justify-center md:justify-start mb-6">
                   <Logo width={200} height={80} variant="default" />
                 </div>
-                <p className="mb-4 max-w-md text-center md:text-left">
+                {{/* Darker text for better contrast */}}
+                <p className="mb-4 max-w-md text-center md:text-left text-[#E0E0E0]">
                   Desarrollamos sistemas de gestión ERP/CRM para pymes, con foco en el sector agropecuario, comercial y
                   servicios.
                 </p>
-                <p className="text-sm text-center md:text-left">Desarrollado en Corrientes, con visión nacional.</p>
+                <p className="text-sm text-center md:text-left text-[#E0E0E0]">Desarrollado en Corrientes, con visión nacional.</p>
               </SlideUp>
             </div>
             <div>
               <SlideUp delay={0.2}>
+                {{/* Brighter heading text */}}
                 <h3 className="text-white font-semibold mb-4">Enlaces rápidos</h3>
                 <ul className="space-y-2">
                   <li>
-                    <Link href="#modulos" className="hover:text-[#F4A261] transition-colors">
+                    <Link href="#modulos" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
                       Módulos
                     </Link>
                   </li>
                   <li>
-                    <Link href="#web-dev" className="hover:text-[#F4A261] transition-colors">
+                    <Link href="#web-dev" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
                       Desarrollo Web
                     </Link>
                   </li>
                   <li>
-                    <Link href="#sectores" className="hover:text-[#F4A261] transition-colors">
+                    <Link href="#sectores" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
                       Sectores
                     </Link>
                   </li>
                   <li>
-                    <Link href="#precios" className="hover:text-[#F4A261] transition-colors">
+                    <Link href="#precios" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
                       Precios
                     </Link>
                   </li>
                   <li>
-                    <Link href="#testimonios" className="hover:text-[#F4A261] transition-colors">
+                    <Link href="#testimonios" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
                       Testimonios
                     </Link>
                   </li>
                   <li>
-                    <Link href="#faq" className="hover:text-[#F4A261] transition-colors">
+                    <Link href="#faq" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
                       FAQ
                     </Link>
                   </li>
                   <li>
-                    <Link href="#contacto" className="hover:text-[#F4A261] transition-colors">
+                    <Link href="#contacto" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
                       Contacto
                     </Link>
                   </li>
@@ -1379,13 +1384,14 @@ export default function Home() {
             </div>
             <div>
               <SlideUp delay={0.4}>
+                {{/* Brighter heading text */}}
                 <h3 className="text-white font-semibold mb-4">Contacto</h3>
                 <ul className="space-y-2">
-                  <li className="flex items-center">
+                  <li className="flex items-center text-[#E0E0E0]">
                     <Phone className="h-4 w-4 mr-2" />
                     <span>+54 379 4601984</span>
                   </li>
-                  <li className="flex items-center">
+                  <li className="flex items-center text-[#E0E0E0]">
                     <Mail className="h-4 w-4 mr-2" />
                     <span>vantyx.ar@gmail.com</span>
                   </li>
@@ -1424,18 +1430,18 @@ export default function Home() {
               </SlideUp>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-[#E0E0E0]">
             <p>© {new Date().getFullYear()} Vantyx. Todos los derechos reservados.</p>
             <div className="mt-4 flex flex-wrap justify-center gap-4">
-              <a href="#" className="hover:text-[#F4A261] transition-colors">
+              <a href="#" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
                 Política de Privacidad
               </a>
               <span className="text-gray-700">|</span>
-              <a href="#" className="hover:text-[#F4A261] transition-colors">
+              <a href="#" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
                 Términos de Uso
               </a>
               <span className="text-gray-700">|</span>
-              <a href="#" className="hover:text-[#F4A261] transition-colors">
+              <a href="#" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
                 Cookies
               </a>
             </div>
