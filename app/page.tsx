@@ -27,11 +27,6 @@ import { motion, AnimatePresence } from "framer-motion" // Añadido AnimatePrese
 
 // Nuevos imports
 import { EnhancedHeroSection } from "@/components/enhanced-hero-section"
-import { PricingComparisonTable } from "@/components/pricing-comparison-table"
-import { FacebookCarousel } from "@/components/facebook-carousel"
-import { VantyxChatbot } from "@/components/vantyx-chatbot"
-import { SpecialOfferCard } from "@/components/special-offer-card"
-import { WebServiceCard } from "@/components/web-service-card" // Importado WebServiceCard
 import { PricingPlans } from "@/components/pricing-plans"
 import { TrustSection } from "@/components/trust-section"
 import { LiveChatWidget } from "@/components/live-chat-widget"
@@ -1004,28 +999,6 @@ export default function Home() {
 
             {/* Tarjetas de servicios en grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {webServices.map((service, index) => (
-                <WebServiceCard
-                  key={index}
-                  title={service.title}
-                  description={service.description}
-                  detailedDescription={service.detailedDescription}
-                  icon={service.icon}
-                  isFlipped={flippedWebServiceIndex === index}
-                  onFlip={() => handleWebServiceFlip(index)}
-                />
-              ))}
-            </div>
-
-            <div className="mb-16">
-              <SpecialOfferCard
-                onClick={() => {
-                  const contactSection = document.getElementById("contacto")
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: "smooth" })
-                  }
-                }}
-              />
             </div>
 
             {/* CTA final */}
@@ -1082,7 +1055,6 @@ export default function Home() {
             </FadeIn>
 
             <div className="mt-12 max-w-2xl mx-auto">
-              <FacebookCarousel />
             </div>
           </div>
         </section>
@@ -1099,13 +1071,13 @@ export default function Home() {
             </FadeIn>
 
             <div className="pb-12">
-              <PricingComparisonTable />
+              {/* Agregando sección de planes y precios mejorada */}
+              <PricingPlans />
             </div>
           </div>
         </section>
 
-        <PricingPlans />
-
+        {/* Agregando sección de confianza y seguridad */}
         <TrustSection />
 
         {/* CTA - Después de Precios */}
@@ -1320,7 +1292,7 @@ export default function Home() {
                 <AnimatedButton
                   variant="outline"
                   className="bg-transparent text-white border-white hover:bg-white/10 px-8 py-3 text-lg"
-                  onClick={() => window.open("https://wa.me/543794601984", "_blank")}
+                  onClick={() => window.open("https://wa.me/54394601984", "_blank")}
                 >
                   Contactar a un Asesor
                 </AnimatedButton>
@@ -1460,9 +1432,7 @@ export default function Home() {
       {/* Botón flotante de WhatsApp */}
       <WhatsAppButton />
 
-      {/* Chatbot de Vantyx */}
-      <VantyxChatbot />
-
+      {/* Chat widget flotante */}
       <LiveChatWidget />
     </div>
   )
