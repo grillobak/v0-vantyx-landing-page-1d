@@ -999,6 +999,17 @@ export default function Home() {
 
             {/* Tarjetas de servicios en grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {webServices.map((service, index) => (
+                <SectorCard // Reutilizando SectorCard for consistency in styling and flipping
+                  key={index}
+                  title={service.title}
+                  description={service.description}
+                  detailedDescription={service.detailedDescription}
+                  icon={service.icon}
+                  isFlipped={flippedWebServiceIndex === index}
+                  onFlip={() => handleWebServiceFlip(index)}
+                />
+              ))}
             </div>
 
             {/* CTA final */}
@@ -1210,14 +1221,14 @@ export default function Home() {
                   </div>
 
                   <div className="mt-8">
-                    {{/* Darker heading text */}}
+                    {/* Darker heading text */}
                     <h4 className="font-medium text-[#212121] dark:text-gray-200 mb-3">Horario de atención</h4>
                     <p className="text-[#424242] dark:text-gray-400">Lunes a Viernes: 9:00 - 18:00</p>
                     <p className="text-[#424242] dark:text-gray-400">Sábados: 9:00 - 13:00</p>
                   </div>
 
                   <div className="mt-8">
-                    {{/* Darker heading text */}}
+                    {/* Darker heading text */}
                     <h4 className="font-medium text-[#212121] dark:text-gray-200 mb-3">Síguenos en redes sociales</h4>
                     <div className="flex space-x-4">
                       <AnimatedIcon>
@@ -1271,7 +1282,7 @@ export default function Home() {
         <section className="py-16 vantyx-gradient">
           <div className="container mx-auto px-4 md:px-6 text-center">
             <Scale>
-              {{/* Improved text color for better contrast on gradient */}}
+              {/* Improved text color for better contrast on gradient */}
               <h2 className="text-3xl font-bold mb-6 text-white">¿Listo para potenciar tu empresa?</h2>
               <p className="max-w-2xl mx-auto mb-8 text-gray-100">
                 Solicita una demostración gratuita y descubre cómo Vantyx puede ayudarte a optimizar tus procesos y
@@ -1311,7 +1322,7 @@ export default function Home() {
                 <div className="flex justify-center md:justify-start mb-6">
                   <Logo width={200} height={80} variant="default" />
                 </div>
-                {{/* Darker text for better contrast */}}
+                {/* Darker text for better contrast */}
                 <p className="mb-4 max-w-md text-center md:text-left text-[#E0E0E0]">
                   Desarrollamos sistemas de gestión ERP/CRM para pymes, con foco en el sector agropecuario, comercial y
                   servicios.
@@ -1321,7 +1332,7 @@ export default function Home() {
             </div>
             <div>
               <SlideUp delay={0.2}>
-                {{/* Brighter heading text */}}
+                {/* Brighter heading text */}
                 <h3 className="text-white font-semibold mb-4">Enlaces rápidos</h3>
                 <ul className="space-y-2">
                   <li>
@@ -1364,7 +1375,7 @@ export default function Home() {
             </div>
             <div>
               <SlideUp delay={0.4}>
-                {{/* Brighter heading text */}}
+                {/* Brighter heading text */}
                 <h3 className="text-white font-semibold mb-4">Contacto</h3>
                 <ul className="space-y-2">
                   <li className="flex items-center text-[#E0E0E0]">
