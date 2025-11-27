@@ -273,10 +273,10 @@ export default function PoliticaCookiesPage() {
             <h2 className="text-xl font-bold mb-4">Contacto</h2>
             <p className="mb-2">Para consultas sobre nuestra política de cookies:</p>
             <p>
-              <strong>Email:</strong> privacidad@vantyx.com.ar
+              <strong>Email:</strong> vantyx.arg@gmail.com
             </p>
             <p>
-              <strong>Teléfono:</strong> +54 11 XXXX-XXXX
+              <strong>Celular:</strong> +54 379 460 1984
             </p>
           </section>
         </div>

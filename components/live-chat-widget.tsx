@@ -1,8 +1,10 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { MessageCircle, Send, X, Minimize2, Maximize2 } from 'lucide-react'
+import { MessageCircle, Send, X, Minimize2, Maximize2 } from "lucide-react"
 
 interface Message {
   id: string
@@ -95,22 +97,6 @@ export function LiveChatWidget() {
         </div>
       </motion.button>
 
-      <motion.a
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 2.2 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        href="https://wa.me/5491112345678?text=Hola%20Vantyx%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-28 right-6 z-40 w-14 h-14 rounded-full bg-green-500 text-white shadow-lg flex items-center justify-center hover:shadow-xl hover:bg-green-600 transition-all duration-300"
-      >
-        <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371 0-.57 0-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-9.746 9.798c0 2.719.738 5.38 2.137 7.797l-2.262 6.257 6.541-2.236c2.261 1.226 4.812 1.829 7.316 1.829 9.79 0 17.439-7.65 17.439-17.439 0-4.68-1.814-9.08-5.112-12.379-3.297-3.297-7.713-5.112-12.377-5.112" />
-        </svg>
-      </motion.a>
-
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -119,8 +105,8 @@ export function LiveChatWidget() {
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3 }}
             className={`fixed z-40 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 flex flex-col ${
-              isMinimized 
-                ? "bottom-28 right-4 sm:right-6 w-80 h-16" 
+              isMinimized
+                ? "bottom-28 right-4 sm:right-6 w-80 h-16"
                 : "bottom-28 right-4 sm:right-6 w-full max-w-sm h-96 sm:max-w-md"
             } transition-all duration-300`}
           >
@@ -140,11 +126,7 @@ export function LiveChatWidget() {
                   onClick={() => setIsMinimized(!isMinimized)}
                   className="hover:bg-white/20 p-1.5 sm:p-2 rounded-lg transition-all"
                 >
-                  {isMinimized ? (
-                    <Maximize2 className="h-4 w-4" />
-                  ) : (
-                    <Minimize2 className="h-4 w-4" />
-                  )}
+                  {isMinimized ? <Maximize2 className="h-4 w-4" /> : <Minimize2 className="h-4 w-4" />}
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
@@ -186,7 +168,10 @@ export function LiveChatWidget() {
                 </div>
 
                 {/* Input */}
-                <form onSubmit={handleSendMessage} className="border-t border-gray-200 dark:border-gray-700 p-3 sm:p-4 flex gap-2">
+                <form
+                  onSubmit={handleSendMessage}
+                  className="border-t border-gray-200 dark:border-gray-700 p-3 sm:p-4 flex gap-2"
+                >
                   <input
                     type="text"
                     value={inputValue}

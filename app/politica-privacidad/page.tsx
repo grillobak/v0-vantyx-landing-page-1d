@@ -52,16 +52,16 @@ export default function PoliticaPrivacidadPage() {
             <div className="bg-[#F8F9FA] dark:bg-[#0a1628] rounded-lg p-6">
               <ul className="space-y-2 text-[#424242] dark:text-gray-300">
                 <li>
-                  <strong>Razón Social:</strong> Vantyx Software S.R.L.
+                  <strong>Razón Social:</strong> Vantyx Soluciones
                 </li>
                 <li>
-                  <strong>CUIT:</strong> 30-XXXXXXXX-X
+                  <strong>Domicilio:</strong> Corrientes, Argentina
                 </li>
                 <li>
-                  <strong>Domicilio:</strong> Buenos Aires, Argentina
+                  <strong>Email de contacto:</strong> vantyx.arg@gmail.com
                 </li>
                 <li>
-                  <strong>Email de contacto:</strong> privacidad@vantyx.com.ar
+                  <strong>Celular:</strong> +54 379 460 1984
                 </li>
               </ul>
             </div>
@@ -172,7 +172,7 @@ export default function PoliticaPrivacidadPage() {
               ))}
             </div>
             <p className="text-[#424242] dark:text-gray-300 mt-4">
-              Para ejercer estos derechos, contactanos a <strong>privacidad@vantyx.com.ar</strong>
+              Para ejercer estos derechos, contactanos a <strong>vantyx.arg@gmail.com</strong>
             </p>
           </section>
 
@@ -220,13 +220,13 @@ export default function PoliticaPrivacidadPage() {
             </p>
             <div className="bg-[#1D3557] text-white rounded-lg p-6 mt-4">
               <p>
-                <strong>Email:</strong> privacidad@vantyx.com.ar
+                <strong>Email:</strong> vantyx.arg@gmail.com
               </p>
               <p>
-                <strong>Teléfono:</strong> +54 11 XXXX-XXXX
+                <strong>Celular:</strong> +54 379 460 1984
               </p>
               <p>
-                <strong>Dirección:</strong> Buenos Aires, Argentina
+                <strong>Dirección:</strong> Corrientes, Argentina
               </p>
             </div>
           </section>

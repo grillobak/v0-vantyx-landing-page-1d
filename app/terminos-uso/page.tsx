@@ -158,7 +158,7 @@ export default function TerminosUsoPage() {
             <h2 className="text-xl font-bold text-[#1D3557] dark:text-white mb-4">8. Propiedad Intelectual</h2>
             <p className="text-[#424242] dark:text-gray-300 mb-4">
               Todos los derechos de propiedad intelectual sobre la Plataforma, incluyendo software, diseño, logotipos,
-              textos y gráficos, pertenecen a Vantyx Software S.R.L. o sus licenciantes.
+              textos y gráficos, pertenecen a Vantyx Soluciones o sus licenciantes.
             </p>
             <p className="text-[#424242] dark:text-gray-300">
               El Usuario conserva la propiedad de su Contenido, otorgando a Vantyx una licencia limitada para procesarlo
@@ -241,8 +241,8 @@ export default function TerminosUsoPage() {
             <h2 className="text-xl font-bold text-[#1D3557] dark:text-white mb-4">14. Ley Aplicable y Jurisdicción</h2>
             <p className="text-[#424242] dark:text-gray-300">
               Estos términos se rigen por las leyes de la República Argentina. Cualquier controversia será sometida a
-              los tribunales ordinarios de la Ciudad Autónoma de Buenos Aires, renunciando las partes a cualquier otro
-              fuero o jurisdicción.
+              los tribunales ordinarios de la Provincia de Corrientes, renunciando las partes a cualquier otro fuero o
+              jurisdicción.
             </p>
           </section>
 
@@ -251,13 +251,13 @@ export default function TerminosUsoPage() {
             <h2 className="text-xl font-bold mb-4">15. Contacto</h2>
             <p className="mb-2">Para consultas sobre estos términos:</p>
             <p>
-              <strong>Email:</strong> legal@vantyx.com.ar
+              <strong>Email:</strong> vantyx.arg@gmail.com
             </p>
             <p>
-              <strong>Teléfono:</strong> +54 11 XXXX-XXXX
+              <strong>Celular:</strong> +54 379 460 1984
             </p>
             <p>
-              <strong>Dirección:</strong> Buenos Aires, Argentina
+              <strong>Dirección:</strong> Corrientes, Argentina
             </p>
           </section>
         </div>
