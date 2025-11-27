@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Loader2, CheckCircle } from "lucide-react"
+import Link from "next/link"
+import { PrivacyNotice } from "@/components/privacy-notice"
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -290,6 +292,8 @@ export function ContactForm() {
               )}
             />
 
+            <PrivacyNotice variant="form" className="mt-4" />
+
             <Button type="submit" className="w-full bg-[#1D3557] hover:bg-[#152A45] text-white" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
@@ -301,8 +305,15 @@ export function ContactForm() {
               )}
             </Button>
             <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-2">
-              Al enviar este formulario, acepta que sus datos sean procesados para contactarlo según nuestra política de
-              privacidad.
+              Al enviar este formulario, aceptás nuestra{" "}
+              <Link href="/politica-privacidad" className="text-[#F4A261] hover:underline">
+                Política de Privacidad
+              </Link>{" "}
+              y los{" "}
+              <Link href="/terminos-uso" className="text-[#F4A261] hover:underline">
+                Términos de Uso
+              </Link>
+              .
             </p>
           </form>
         </Form>
