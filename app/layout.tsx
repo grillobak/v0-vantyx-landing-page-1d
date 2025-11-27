@@ -6,6 +6,7 @@ import { ScrollToTop } from "@/components/scroll-to-top"
 import { AuthProvider } from "@/context/AuthContext"
 import { Toaster } from "sonner"
 import { Analytics } from "@vercel/analytics/react"
+import { CookieBanner } from "@/components/cookie-banner"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -22,7 +23,7 @@ export const metadata = {
     siteName: "Vantyx",
     type: "website",
   },
-    generator: 'v0.app'
+  generator: "v0.app",
 }
 
 export const viewport = {
@@ -60,6 +61,7 @@ export default function RootLayout({
             {children}
             <ScrollToTop />
             <Toaster position="top-right" />
+            <CookieBanner />
           </AuthProvider>
         </ThemeProvider>
         <Analytics />

@@ -1,6 +1,28 @@
 "use client"
 
-import { Mail, Phone, ArrowRight, Check, FileText, Package, Users, DollarSign, Building2, Facebook, Instagram, Zap, Headphones, Link2, Settings, CreditCard, Database, Shield, RefreshCw, HelpCircle, ChevronDown } from 'lucide-react'
+import {
+  Mail,
+  Phone,
+  ArrowRight,
+  Check,
+  FileText,
+  Package,
+  Users,
+  DollarSign,
+  Building2,
+  Facebook,
+  Instagram,
+  Zap,
+  Headphones,
+  Link2,
+  Settings,
+  CreditCard,
+  Database,
+  Shield,
+  RefreshCw,
+  HelpCircle,
+  ChevronDown,
+} from "lucide-react"
 import Link from "next/link"
 import { Logo } from "@/components/logo"
 import { GoogleForm } from "@/components/google-form"
@@ -30,7 +52,6 @@ import { EnhancedHeroSection } from "@/components/enhanced-hero-section"
 import { PricingPlans } from "@/components/pricing-plans"
 import { TrustSection } from "@/components/trust-section"
 import { LiveChatWidget } from "@/components/live-chat-widget"
-
 
 export default function Home() {
   // Módulos con sus descripciones
@@ -761,7 +782,7 @@ export default function Home() {
             </FadeIn>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
-              {modules.map((module, index) => (
+              {modules.map((module, index) =>
                 module.isSpecial ? (
                   <motion.div
                     key={index}
@@ -792,7 +813,9 @@ export default function Home() {
                           className="overflow-hidden w-full"
                         >
                           <p className="text-xs text-[#424242] dark:text-gray-400 mb-4 leading-relaxed">
-                            Automatizá la emisión de comprobantes ARCA en un mismo panel. Generá facturas A/B/C, notas de crédito y débito, remitos y comprobantes fiscales con CAE y QR instantáneos, validaciones según tipo de cliente y respaldo seguro por 10 años.
+                            Automatizá la emisión de comprobantes ARCA en un mismo panel. Generá facturas A/B/C, notas
+                            de crédito y débito, remitos y comprobantes fiscales con CAE y QR instantáneos, validaciones
+                            según tipo de cliente y respaldo seguro por 10 años.
                           </p>
                           <ul className="space-y-2">
                             <li className="flex items-start gap-2 text-xs text-[#424242] dark:text-gray-400">
@@ -821,8 +844,8 @@ export default function Home() {
                     isOpen={openModuleIndex === index}
                     onClick={() => toggleModule(index)}
                   />
-                )
-              ))}
+                ),
+              )}
             </div>
           </div>
         </section>
@@ -855,7 +878,9 @@ export default function Home() {
               <SlideInRight>
                 <h2 className="text-3xl font-bold text-[#212121] dark:text-[#F4A261] mb-6">Facturación Electrónica</h2>
                 <p className="text-[#424242] dark:text-gray-400 mb-6">
-                  Automatizá la emisión de comprobantes ARCA en un mismo panel. Generá facturas A/B/C, notas de crédito y débito, remitos y comprobantes fiscales con CAE y QR instantáneos, validaciones según tipo de cliente y respaldo seguro por 10 años.
+                  Automatizá la emisión de comprobantes ARCA en un mismo panel. Generá facturas A/B/C, notas de crédito
+                  y débito, remitos y comprobantes fiscales con CAE y QR instantáneos, validaciones según tipo de
+                  cliente y respaldo seguro por 10 años.
                 </p>
                 <ul className="space-y-3">
                   {[
@@ -1065,8 +1090,7 @@ export default function Home() {
               </AnimatedButton>
             </FadeIn>
 
-            <div className="mt-12 max-w-2xl mx-auto">
-            </div>
+            <div className="mt-12 max-w-2xl mx-auto"></div>
           </div>
         </section>
 
@@ -1327,7 +1351,9 @@ export default function Home() {
                   Desarrollamos sistemas de gestión ERP/CRM para pymes, con foco en el sector agropecuario, comercial y
                   servicios.
                 </p>
-                <p className="text-sm text-center md:text-left text-[#E0E0E0]">Desarrollado en Corrientes, con visión nacional.</p>
+                <p className="text-sm text-center md:text-left text-[#E0E0E0]">
+                  Desarrollado en Corrientes, con visión nacional.
+                </p>
               </SlideUp>
             </div>
             <div>
@@ -1424,17 +1450,17 @@ export default function Home() {
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-[#E0E0E0]">
             <p>© {new Date().getFullYear()} Vantyx. Todos los derechos reservados.</p>
             <div className="mt-4 flex flex-wrap justify-center gap-4">
-              <a href="#" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
+              <Link href="/politica-privacidad" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
                 Política de Privacidad
-              </a>
+              </Link>
               <span className="text-gray-700">|</span>
-              <a href="#" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
+              <Link href="/terminos-uso" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
                 Términos de Uso
-              </a>
+              </Link>
               <span className="text-gray-700">|</span>
-              <a href="#" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
-                Cookies
-              </a>
+              <Link href="/politica-cookies" className="text-[#E0E0E0] hover:text-[#F4A261] transition-colors">
+                Política de Cookies
+              </Link>
             </div>
           </div>
         </div>
