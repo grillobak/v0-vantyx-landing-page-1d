@@ -9,6 +9,7 @@ interface CookiePreferences {
   essential: boolean
   analytics: boolean
   functional: boolean
+  advertising: boolean
 }
 
 export function CookieBanner() {
@@ -18,6 +19,7 @@ export function CookieBanner() {
     essential: true,
     analytics: false,
     functional: false,
+    advertising: false,
   })
 
   useEffect(() => {
@@ -29,7 +31,7 @@ export function CookieBanner() {
   }, [])
 
   const acceptAll = () => {
-    const allAccepted = { essential: true, analytics: true, functional: true }
+    const allAccepted = { essential: true, analytics: true, functional: true, advertising: true }
     localStorage.setItem("cookie_consent", JSON.stringify(allAccepted))
     localStorage.setItem("cookie_consent_date", new Date().toISOString())
     setIsVisible(false)
@@ -42,7 +44,7 @@ export function CookieBanner() {
   }
 
   const rejectOptional = () => {
-    const essentialOnly = { essential: true, analytics: false, functional: false }
+    const essentialOnly = { essential: true, analytics: false, functional: false, advertising: false }
     localStorage.setItem("cookie_consent", JSON.stringify(essentialOnly))
     localStorage.setItem("cookie_consent_date", new Date().toISOString())
     setIsVisible(false)
@@ -69,9 +71,8 @@ export function CookieBanner() {
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-[#1D3557] dark:text-white mb-2">Utilizamos cookies</h3>
                     <p className="text-[#424242] dark:text-gray-300 text-sm mb-4">
-                      Usamos cookies para mejorar tu experiencia, analizar el tráfico y personalizar el contenido. Al
-                      hacer clic en "Aceptar todas", aceptás el uso de todas las cookies. Podés gestionar tus
-                      preferencias en cualquier momento.{" "}
+                      Utilizamos cookies propias y de terceros (incluyendo Google Analytics y Google AdSense) para
+                      mejorar tu experiencia y mostrar anuncios personalizados.{" "}
                       <Link href="/politica-cookies" className="text-[#F4A261] hover:underline">
                         Más información
                       </Link>
@@ -89,13 +90,13 @@ export function CookieBanner() {
                       >
                         Solo esenciales
                       </button>
-                      <button
-                        onClick={() => setShowSettings(true)}
+                      <Link
+                        href="/politica-cookies"
                         className="px-5 py-2.5 border border-[#1D3557] dark:border-gray-500 text-[#1D3557] dark:text-white rounded-lg font-medium hover:bg-[#1D3557]/10 transition-colors text-sm inline-flex items-center gap-2"
                       >
                         <Settings className="w-4 h-4" />
-                        Personalizar
-                      </button>
+                        Configurar
+                      </Link>
                     </div>
                   </div>
                   <button
@@ -139,7 +140,9 @@ export function CookieBanner() {
                   <div className="flex items-center justify-between p-4 bg-[#F8F9FA] dark:bg-[#0a1628] rounded-lg">
                     <div>
                       <h4 className="font-medium text-[#1D3557] dark:text-white">Cookies Analíticas</h4>
-                      <p className="text-sm text-[#666666] dark:text-gray-400">Nos ayudan a mejorar el sitio</p>
+                      <p className="text-sm text-[#666666] dark:text-gray-400">
+                        Google Analytics - Nos ayudan a mejorar el sitio
+                      </p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
@@ -163,6 +166,25 @@ export function CookieBanner() {
                         type="checkbox"
                         checked={preferences.functional}
                         onChange={(e) => setPreferences({ ...preferences, functional: e.target.checked })}
+                        className="sr-only peer"
+                      />
+                      <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#F4A261]"></div>
+                    </label>
+                  </div>
+
+                  {/* Advertising */}
+                  <div className="flex items-center justify-between p-4 bg-[#F8F9FA] dark:bg-[#0a1628] rounded-lg">
+                    <div>
+                      <h4 className="font-medium text-[#1D3557] dark:text-white">Cookies Publicitarias</h4>
+                      <p className="text-sm text-[#666666] dark:text-gray-400">
+                        Google AdSense - Anuncios personalizados
+                      </p>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={preferences.advertising}
+                        onChange={(e) => setPreferences({ ...preferences, advertising: e.target.checked })}
                         className="sr-only peer"
                       />
                       <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#F4A261]"></div>

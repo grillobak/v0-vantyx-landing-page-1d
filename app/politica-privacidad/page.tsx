@@ -176,17 +176,22 @@ export default function PoliticaPrivacidadPage() {
             </p>
           </section>
 
-          {/* Cookies */}
+          {/* Cookies - Updated section 7 to include Google AdSense information */}
           <section className="mb-10">
             <h2 className="text-xl font-bold text-[#1D3557] dark:text-white mb-4">
               7. Cookies y Tecnologías Similares
             </h2>
+            <p className="text-[#424242] dark:text-gray-300 mb-4">
+              Utilizamos cookies para mejorar tu experiencia. Además, utilizamos servicios de publicidad de terceros
+              como Google AdSense, que pueden recopilar información sobre tu navegación para mostrar anuncios
+              relevantes.
+            </p>
             <p className="text-[#424242] dark:text-gray-300">
-              Utilizamos cookies para mejorar tu experiencia. Consultá nuestra{" "}
+              Consultá nuestra{" "}
               <Link href="/politica-cookies" className="text-[#F4A261] hover:underline">
                 Política de Cookies
               </Link>{" "}
-              para más información.
+              para más información sobre cómo gestionamos las cookies y cómo podés configurar tus preferencias.
             </p>
           </section>
 

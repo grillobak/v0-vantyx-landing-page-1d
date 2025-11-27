@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowLeft, Cookie, Settings, BarChart3, Shield, ToggleRight } from "lucide-react"
+import { ArrowLeft, Cookie, Settings, BarChart3, Shield, ToggleRight, Megaphone } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Política de Cookies | Vantyx ERP",
@@ -52,6 +52,7 @@ export default function PoliticaCookiesPage() {
               <li>Mantener tu sesión activa de forma segura</li>
               <li>Analizar el uso del sitio para mejorar nuestros servicios</li>
               <li>Personalizar tu experiencia de usuario</li>
+              <li>Mostrar anuncios relevantes a través de Google AdSense</li>
             </ul>
           </section>
 
@@ -170,6 +171,62 @@ export default function PoliticaCookiesPage() {
                   </tbody>
                 </table>
               </div>
+
+              {/* Publicitarias */}
+              <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <Megaphone className="w-6 h-6 text-[#F4A261]" />
+                  <h3 className="text-lg font-semibold text-[#1D3557] dark:text-white">
+                    Cookies Publicitarias (Google AdSense)
+                  </h3>
+                  <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Opcionales</span>
+                </div>
+                <p className="text-[#424242] dark:text-gray-300 mb-3">
+                  Utilizamos Google AdSense para mostrar anuncios personalizados en nuestro sitio. Google puede utilizar
+                  cookies para mostrar anuncios basados en tus visitas anteriores a este u otros sitios web. Podés optar
+                  por no recibir publicidad personalizada visitando la{" "}
+                  <a
+                    href="https://adssettings.google.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#F4A261] hover:underline"
+                  >
+                    Configuración de Anuncios de Google
+                  </a>
+                  .
+                </p>
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b dark:border-gray-700">
+                      <th className="text-left py-2 text-[#1D3557] dark:text-white">Cookie</th>
+                      <th className="text-left py-2 text-[#1D3557] dark:text-white">Propósito</th>
+                      <th className="text-left py-2 text-[#1D3557] dark:text-white">Duración</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-[#424242] dark:text-gray-300">
+                    <tr className="border-b dark:border-gray-700">
+                      <td className="py-2">__gads</td>
+                      <td className="py-2">Identificación para publicidad</td>
+                      <td className="py-2">13 meses</td>
+                    </tr>
+                    <tr className="border-b dark:border-gray-700">
+                      <td className="py-2">__gpi</td>
+                      <td className="py-2">Personalización de anuncios</td>
+                      <td className="py-2">13 meses</td>
+                    </tr>
+                    <tr className="border-b dark:border-gray-700">
+                      <td className="py-2">DSID</td>
+                      <td className="py-2">Preferencias de anuncios</td>
+                      <td className="py-2">2 semanas</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2">IDE</td>
+                      <td className="py-2">Remarketing de DoubleClick</td>
+                      <td className="py-2">13 meses</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
 
@@ -193,6 +250,17 @@ export default function PoliticaCookiesPage() {
               </li>
               <li>
                 <strong>Herramientas de terceros:</strong> Podés usar extensiones de navegador para gestionar cookies
+              </li>
+              <li>
+                <strong>Google Ads Settings:</strong> Para cookies publicitarias, visitá{" "}
+                <a
+                  href="https://adssettings.google.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#F4A261] hover:underline"
+                >
+                  adssettings.google.com
+                </a>
               </li>
             </ul>
 
@@ -254,8 +322,8 @@ export default function PoliticaCookiesPage() {
             </h2>
             <p className="text-[#424242] dark:text-gray-300">
               Si desactivás las cookies esenciales, algunas funcionalidades del sitio podrían no funcionar
-              correctamente. Si desactivás cookies analíticas o funcionales, tu experiencia podría ser menos
-              personalizada, pero el sitio seguirá funcionando normalmente.
+              correctamente. Si desactivás cookies analíticas, funcionales o publicitarias, tu experiencia podría ser
+              menos personalizada, pero el sitio seguirá funcionando normalmente.
             </p>
           </section>
 
